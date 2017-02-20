@@ -15,59 +15,119 @@ import java.awt.Color;
  */
 public class Board {
 
-	private Map<Square, Piece> board = new HashMap<>();
+	private Square[][] chessboard;
+	// private Map<Square, Piece> board = new HashMap<>();
 	private Color white = Color.WHITE;
 	private Color black = Color.BLACK;
-	private ArrayList<Piece> piecesInGame;
+	private ArrayList<Piece> whitePiecesInGame;
+	private ArrayList<Piece> blackPiecesInGame;
+	// private Square sq;
 
-	public Map<Square, Piece> getBoard() {
-		return board;
+	public Square[][] getBoard() {
+		return chessboard;
 	}
 
-	public void setBoard(Map<Square, Piece> board) {
-		this.board = board;
+	public void setBoard(Square[][] board) {
+		this.chessboard = board;
 	}
-/**
- * creates empty board with 64 squares named from A1 to H8 with interchangeable colors
- */
+
+	/**
+	 * creates empty board with 64 squares named from A1 to H8 with
+	 * interchangeable colors, but table is bigger (81 squares) to simplify specifying moves
+	 */
 	// private? invoked in run?
-	public void createBoard() {
+	Board() {
+		chessboard = new Square[9][9];
 		boolean isBlack = true;
 		// rank++ changes letters, incrementing them by one: A B C...
-		for (char rank = 'A'; rank <= 'H'; rank++) {
+		for (int rank = 1; rank <= 8; rank++) {
 			for (int file = 1; file <= 8; file++) {
-				if (isBlack){
-					board.put(new Square(rank, file, black), new EmptyPiece());
-					isBlack=changeColorToOpposite(isBlack);
-				}
-				else{
-					board.put(new Square(rank, file, white), new EmptyPiece());
-					isBlack=changeColorToOpposite(isBlack);
+				if (isBlack) {
+					chessboard[rank][file] = new Square(black, new EmptyPiece());
+					isBlack = changeColorToOpposite(isBlack);
+				} else {
+					chessboard[rank][file] = new Square(white, new EmptyPiece());
+					isBlack = changeColorToOpposite(isBlack);
 				}
 			}
-			isBlack=changeColorToOpposite(isBlack);
+			isBlack = changeColorToOpposite(isBlack);
 		}
 	}
+
+	private void createWhitePieces() {
+		whitePiecesInGame=new ArrayList<>();
+		whitePiecesInGame.add(new Rook(white));
+		whitePiecesInGame.add(new Knight(white));
+		whitePiecesInGame.add(new Bishop(white));
+		whitePiecesInGame.add(new King(white));
+		whitePiecesInGame.add(new Queen(white));
+		whitePiecesInGame.add(new Bishop(white));
+		whitePiecesInGame.add(new Knight(white));
+		whitePiecesInGame.add(new Rook(white));
+		for (int numberOfPawns = 0; numberOfPawns < 8; numberOfPawns++) {
+			whitePiecesInGame.add(new Pawn(white));
+		}
+	}
+
+	private void createBlackPieces() {
+		blackPiecesInGame=new ArrayList<>();
+		blackPiecesInGame.add(new Rook(black));
+		blackPiecesInGame.add(new Knight(black));
+		blackPiecesInGame.add(new Bishop(black));
+		blackPiecesInGame.add(new King(black));
+		blackPiecesInGame.add(new Queen(black));
+		blackPiecesInGame.add(new Bishop(black));
+		blackPiecesInGame.add(new Knight(black));
+		blackPiecesInGame.add(new Rook(black));
+		for (int numberOfPawns = 0; numberOfPawns < 8; numberOfPawns++) {
+			blackPiecesInGame.add(new Pawn(black));
+		}
+
+	}
+
 	/**
 	 * puts all types of pieces in their correct starting position.
 	 */
-	public void initializeBoard(){
-		//TODO create pieces in white and black
-		//board.put(Square('A',1), new Rook(white));
-		Piece whiteKing=new King(white);
-		Piece blackKing=new King(black);
-		Piece whiteQueen=new Queen(white);
-		Piece blackQueen=new Queen(black);
-		//TODO put pieces in their places
-		//TODO add them to the list of pieces
+	public void initializeBoard() {
+		createWhitePieces();
+		createBlackPieces();
+		int rowOfPawnsIndex = 8;
+		for (int file = 1; file <= 8; file++) {
+			Piece whitePieceToAdd = whitePiecesInGame.get(file - 1);
+			Piece whitePieceToAddSecondRow = whitePiecesInGame.get(rowOfPawnsIndex++);
+			chessboard[1][file].setPiece(whitePieceToAdd);
+			chessboard[2][file].setPiece(whitePieceToAddSecondRow);
+			Piece blackPieceToAdd = blackPiecesInGame.get(file - 1);
+			Piece blackPieceToAddSeventhRow = blackPiecesInGame.get(rowOfPawnsIndex++);
+			chessboard[8][file].setPiece(blackPieceToAdd);
+			chessboard[7][file].setPiece(blackPieceToAddSeventhRow);
+		}
 	}
-	
+
 	/**
-	 * helps in assigning correct colors on the board, changes value from true for black to false for white
+	 * helps in assigning correct colors on the board, changes value from true
+	 * for black to false for white
+	 * 
 	 * @param isBlack
 	 * @return
 	 */
-	private boolean changeColorToOpposite(boolean isBlack){
+	private boolean changeColorToOpposite(boolean isBlack) {
 		return !isBlack;
+	}
+
+	public ArrayList<Piece> getWhitePiecesInGame() {
+		return whitePiecesInGame;
+	}
+
+	public ArrayList<Piece> getBlackPiecesInGame() {
+		return blackPiecesInGame;
+	}
+
+	public void setWhitePiecesInGame(ArrayList<Piece> whitePiecesInGame) {
+		this.whitePiecesInGame = whitePiecesInGame;
+	}
+
+	public void setBlackPiecesInGame(ArrayList<Piece> blackPiecesInGame) {
+		this.blackPiecesInGame = blackPiecesInGame;
 	}
 }
