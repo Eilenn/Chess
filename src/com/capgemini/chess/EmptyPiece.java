@@ -4,7 +4,7 @@ import java.awt.Color;
 
 public class EmptyPiece extends Piece{
 
-	EmptyPiece(Color color) {
+	EmptyPiece(ColorChess color) {
 		super(color);
 		// TODO Auto-generated constructor stub
 	}

@@ -1,10 +1,7 @@
 package com.capgemini.chess;
 
+//import java.awt.Color;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
-
-import java.awt.Color;
 
 /**
  * Board represents chess board with 64 square tiles, numbered with combination
@@ -16,8 +13,8 @@ import java.awt.Color;
 public class Board {
 
 	private Square[][] chessboard;
-	private Color white = Color.WHITE;
-	private Color black = Color.BLACK;
+	private ColorChess white = ColorChess.WHITE;
+	private ColorChess black = ColorChess.BLACK;
 	private ArrayList<Piece> whitePiecesInGame;
 	private ArrayList<Piece> blackPiecesInGame;
 

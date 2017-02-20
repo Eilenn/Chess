@@ -4,7 +4,7 @@ import java.awt.Color;
 
 public class Pawn extends Piece {
 
-	Pawn(Color color) {
+	Pawn(ColorChess color) {
 		super(color);
 		// TODO Auto-generated constructor stub
 	}

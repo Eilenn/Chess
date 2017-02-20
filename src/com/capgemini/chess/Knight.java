@@ -1,10 +1,8 @@
 package com.capgemini.chess;
 
-import java.awt.Color;
-
 public class Knight extends Piece {
 
-	Knight(Color color) {
+	Knight(ColorChess color) {
 		super(color);
 	}
 // TODO check corners?
@@ -16,7 +14,13 @@ public class Knight extends Piece {
 		boolean canDownRight = isMoveDownRightAllowed(from, to);
 		return canUpLeft || canUpRight || canDownLeft || canDownRight;
 	}
-
+/**
+ * checks if move is allowed for Knight - it can only move two fields horizontally and one vertically
+ * or two fields vertically and one horizontally; every method checks one of the combinations
+ * @param from
+ * @param to
+ * @return
+ */
 	private boolean isMoveUpLeftAllowed(Coordinate from, Coordinate to) {
 		int fromX = from.getRow();
 		int fromY = from.getColumn();

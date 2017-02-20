@@ -1,11 +1,9 @@
 package com.capgemini.chess;
 
-import java.awt.Color;
-
 public abstract class Piece {
-	private Color color;
+	private ColorChess color;
 	
-	Piece(Color color){
+	Piece(ColorChess color){
 		this.color=color;
 	}
 	Piece(){
@@ -14,11 +12,11 @@ public abstract class Piece {
 
 	public abstract boolean isMoveValid(Coordinate from, Coordinate to);
 
-	public Color getColor() {
+	public ColorChess getColor() {
 		return color;
 	}
 
-	public void setColor(Color color) {
+	public void setColor(ColorChess color) {
 		this.color = color;
 	}
 

@@ -1,7 +1,5 @@
 package com.capgemini.chess;
 
-import java.awt.Color;
-
 /**
  * Square represents single tile of the game.
  * 
@@ -9,15 +7,15 @@ import java.awt.Color;
  *
  */
 public class Square {
-	private Color color;
+	private ColorChess color;
 	private Piece piece;
 
-	public Square(Color color, Piece piece) {
+	public Square(ColorChess color, Piece piece) {
 		this.color = color;
 		this.piece = piece;
 	}
 
-	public Color getColor() {
+	public ColorChess getColor() {
 		return color;
 	}
 
