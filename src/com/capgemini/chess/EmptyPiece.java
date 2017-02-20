@@ -8,9 +8,16 @@ public class EmptyPiece extends Piece{
 		super(color);
 		// TODO Auto-generated constructor stub
 	}
-
-	public EmptyPiece() {
-		// TODO Auto-generated constructor stub
+	EmptyPiece(){
+		
 	}
+	@Override
+	public boolean isMoveValid(Coordinate from, Coordinate to) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+	
+
+
 
 }

@@ -7,4 +7,12 @@ public class Bishop extends Piece {
 		super(color);
 		// TODO Auto-generated constructor stub
 	}
+
+	@Override
+	public boolean isMoveValid(Coordinate from, Coordinate to) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+
 }

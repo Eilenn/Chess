@@ -9,4 +9,11 @@ public class Queen extends Piece {
 		// TODO Auto-generated constructor stub
 	}
 
+	@Override
+	public boolean isMoveValid(Coordinate from, Coordinate to) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+
 }

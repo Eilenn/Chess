@@ -26,7 +26,6 @@ public class Board {
 	 * interchangeable colors, but table is bigger (81 squares) to simplify
 	 * specifying moves
 	 */
-	// private? invoked in run?
 	Board() {
 		chessboard = new Square[9][9];
 		boolean isBlack = true;

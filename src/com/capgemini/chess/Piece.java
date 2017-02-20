@@ -2,15 +2,17 @@ package com.capgemini.chess;
 
 import java.awt.Color;
 
-public class Piece {
+public abstract class Piece {
 	private Color color;
 	
 	Piece(Color color){
 		this.color=color;
 	}
-
-	public Piece() {
+	Piece(){
+		
 	}
+
+	public abstract boolean isMoveValid(Coordinate from, Coordinate to);
 
 	public Color getColor() {
 		return color;
@@ -19,5 +21,6 @@ public class Piece {
 	public void setColor(Color color) {
 		this.color = color;
 	}
+
 
 }
