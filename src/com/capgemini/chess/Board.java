@@ -16,30 +16,20 @@ import java.awt.Color;
 public class Board {
 
 	private Square[][] chessboard;
-	// private Map<Square, Piece> board = new HashMap<>();
 	private Color white = Color.WHITE;
 	private Color black = Color.BLACK;
 	private ArrayList<Piece> whitePiecesInGame;
 	private ArrayList<Piece> blackPiecesInGame;
-	// private Square sq;
-
-	public Square[][] getBoard() {
-		return chessboard;
-	}
-
-	public void setBoard(Square[][] board) {
-		this.chessboard = board;
-	}
 
 	/**
 	 * creates empty board with 64 squares named from A1 to H8 with
-	 * interchangeable colors, but table is bigger (81 squares) to simplify specifying moves
+	 * interchangeable colors, but table is bigger (81 squares) to simplify
+	 * specifying moves
 	 */
 	// private? invoked in run?
 	Board() {
 		chessboard = new Square[9][9];
 		boolean isBlack = true;
-		// rank++ changes letters, incrementing them by one: A B C...
 		for (int rank = 1; rank <= 8; rank++) {
 			for (int file = 1; file <= 8; file++) {
 				if (isBlack) {
@@ -55,7 +45,7 @@ public class Board {
 	}
 
 	private void createWhitePieces() {
-		whitePiecesInGame=new ArrayList<>();
+		whitePiecesInGame = new ArrayList<>();
 		whitePiecesInGame.add(new Rook(white));
 		whitePiecesInGame.add(new Knight(white));
 		whitePiecesInGame.add(new Bishop(white));
@@ -70,7 +60,7 @@ public class Board {
 	}
 
 	private void createBlackPieces() {
-		blackPiecesInGame=new ArrayList<>();
+		blackPiecesInGame = new ArrayList<>();
 		blackPiecesInGame.add(new Rook(black));
 		blackPiecesInGame.add(new Knight(black));
 		blackPiecesInGame.add(new Bishop(black));
@@ -91,14 +81,15 @@ public class Board {
 	public void initializeBoard() {
 		createWhitePieces();
 		createBlackPieces();
-		int rowOfPawnsIndex = 8;
+		int rowOfWhitePawnsIndex = 8;
+		int rowOfBlackPawnsIndex = 8;
 		for (int file = 1; file <= 8; file++) {
 			Piece whitePieceToAdd = whitePiecesInGame.get(file - 1);
-			Piece whitePieceToAddSecondRow = whitePiecesInGame.get(rowOfPawnsIndex++);
+			Piece whitePieceToAddSecondRow = whitePiecesInGame.get(rowOfWhitePawnsIndex++);
 			chessboard[1][file].setPiece(whitePieceToAdd);
 			chessboard[2][file].setPiece(whitePieceToAddSecondRow);
 			Piece blackPieceToAdd = blackPiecesInGame.get(file - 1);
-			Piece blackPieceToAddSeventhRow = blackPiecesInGame.get(rowOfPawnsIndex++);
+			Piece blackPieceToAddSeventhRow = blackPiecesInGame.get(rowOfBlackPawnsIndex++);
 			chessboard[8][file].setPiece(blackPieceToAdd);
 			chessboard[7][file].setPiece(blackPieceToAddSeventhRow);
 		}
@@ -130,4 +121,9 @@ public class Board {
 	public void setBlackPiecesInGame(ArrayList<Piece> blackPiecesInGame) {
 		this.blackPiecesInGame = blackPiecesInGame;
 	}
+
+	public Square[][] getChessboard() {
+		return chessboard;
+	}
+
 }
