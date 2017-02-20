@@ -19,6 +19,9 @@ public abstract class Piece {
 	public void setColor(ColorChess color) {
 		this.color = color;
 	}
+	public boolean isMoveValid(Coordinate from, Coordinate to, Square[][] chessboard) {
+		return false;
+	}
 
 
 }
