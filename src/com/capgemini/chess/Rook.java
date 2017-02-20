@@ -29,6 +29,20 @@ public class Rook extends Piece {
 	}
 	//TODO check if occupied on the way
 	private boolean isPathToDestinationFree(Coordinate from, Coordinate to,Square[][] chessboard){
+		int fromRow=from.getRow();
+		int fromCol=from.getColumn();
+		int toRow=to.getRow();
+		int toCol=to.getColumn();
+		int rowStart, rowEnd, colStart,colEnd;
+		if(fromRow<=toRow){
+			rowStart=fromRow;
+			rowEnd=toRow;
+		}
+		else{
+			rowStart=toRow;
+			rowEnd=fromRow;
+		}
+		//(from.getRow()<=to.getRow())?from.getRow():to.getRow();
 		if(isMoveAllowed(from, to)){
 			
 		}
