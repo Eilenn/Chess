@@ -76,11 +76,36 @@ public class Pawn extends Piece {
 		}
 		return false;
 	}
-
+	
+	private boolean isPathBlocked(Coordinate from, Coordinate to, Square[][] chessboard){
+		Square sq;
+		EmptyPiece empty = new EmptyPiece();
+		if(isBlack()){
+			sq = chessboard[from.getRow()-1][from.getColumn()];
+		}
+		else{
+			sq=chessboard[from.getRow()+1][from.getColumn()];
+		}
+		if (!sq.getPiece().equals(empty)) {
+			return true;
+		}
+		else 
+			return false;
+	}
+	
 	@Override
 	public boolean isMoveValid(Coordinate from, Coordinate to, Square[][] chessboard) {
-
-		return false;
+		if(isPieceAtDestinationTheSameColorAsPieceMoved(from, to, chessboard)){
+				return false;}
+		else{
+			boolean isValid, freePath,isAllowed,isCapture;
+			freePath=!isPathBlocked(from, to, chessboard);
+			isAllowed=isAllowed(from, to, chessboard);
+			isCapture=isAttemptToCapture(from, to, chessboard);
+			isValid=(freePath&&isAllowed)||isCapture;
+			return isValid;
+//TODO doubled code, fix attempt to capture
+			//return false;}
 	}
 
-}
+}}
