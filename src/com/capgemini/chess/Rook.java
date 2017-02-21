@@ -10,13 +10,26 @@ public class Rook extends Piece {
 
 	@Override
 	public boolean isMoveValid(Coordinate from, Coordinate to, Square[][] chessboard) {
-		if (isMoveAllowedForRook(from, to)) {
-			if (isPathToDestinationOccupied(from, to, chessboard)) {
-				return false;
-			} else
-				return true;
-		} else
+		// check if move causes capturing of the same team, if so - it is not
+		// valid
+		if (doesMoveCauseCapturingOfTheSameColor(from, to, chessboard)) {
 			return false;
+		}
+		// if it doesn't
+		else {
+			// check if the move is horizontal or vertical - if it's not, return false
+			if (isMoveAllowedForRook(from, to)) {
+				// check if the move doesn't cause leaping over a piece, if it
+				// does - return false
+				if (isPathToDestinationOccupied(from, to, chessboard)) {
+					return false;
+				} else
+					return true;
+			} 
+			else {
+				return false;
+			}
+		}
 	}
 
 	private boolean isDestinationInTheSameRow(Coordinate from, Coordinate to) {

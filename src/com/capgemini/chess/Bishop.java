@@ -8,10 +8,14 @@ public class Bishop extends Piece {
 
 	@Override
 	public boolean isMoveValid(Coordinate from, Coordinate to, Square[][] chessboard) {
-		if (isMoveAllowed(from, to) && !isPathToDestinationOccupied(from, to, chessboard)) {
-			return true;
-		} else
+		if (doesMoveCauseCapturingOfTheSameColor(from, to, chessboard)) {
 			return false;
+		} else {
+			if (isMoveAllowed(from, to) && !isPathToDestinationOccupied(from, to, chessboard)) {
+				return true;
+			} else
+				return false;
+		}
 	}
 
 	public boolean isMoveAllowed(Coordinate from, Coordinate to) {

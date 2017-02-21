@@ -3,6 +3,7 @@ package com.capgemini.chess;
 import static org.junit.Assert.*;
 
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 
 public class RookTest {
@@ -16,104 +17,110 @@ public class RookTest {
 	@Before
 	public void init() {
 		rook = new Rook(white);
-		board=new Board();
+		board = new Board();
 		board.initializeBoard();
-		chessboard=board.getChessboard();
+		chessboard = board.getChessboard();
 	}
 
 	@Test
 	public void shouldReturnTrueForRookMovedInTheSameColumn() {
 		// given
-		from=new Coordinate(3, 4);
-		to=new Coordinate(5, 4);
+		from = new Coordinate(3, 4);
+		to = new Coordinate(5, 4);
 		// when
-		boolean isInTheSameColumn=rook.isMoveValid(from, to,chessboard);
+		boolean isInTheSameColumn = rook.isMoveValid(from, to, chessboard);
 		// then
 		assertTrue(isInTheSameColumn);
 	}
-	
+
 	@Test
 	public void shouldReturnTrueForRookMovedInTheSameRow() {
 		// given
-		from=new Coordinate(4, 2);
-		to=new Coordinate(4, 4);
+		from = new Coordinate(4, 2);
+		to = new Coordinate(4, 4);
 		// when
-		boolean isInTheSameRow=rook.isMoveValid(from, to,chessboard);
+		boolean isInTheSameRow = rook.isMoveValid(from, to, chessboard);
 		// then
 		assertTrue(isInTheSameRow);
 	}
-	
+
 	@Test
-	public void shouldReturnFalseForPiecesInPath(){
+	public void shouldReturnFalseForPiecesInPath() {
 		// given
-		from=new Coordinate(1, 1);
-		to=new Coordinate(4,1);
-		Piece piece=chessboard[from.getRow()][from.getColumn()].getPiece();
+		from = new Coordinate(1, 1);
+		to = new Coordinate(4, 1);
+		Piece piece = chessboard[from.getRow()][from.getColumn()].getPiece();
 		// when
-		boolean isValid=piece.isMoveValid(from, to, chessboard);
+		boolean isValid = piece.isMoveValid(from, to, chessboard);
 		// then
-		assertFalse(isValid);	
+		assertFalse(isValid);
 	}
-	
+
 	@Test
-	public void shouldReturnTrueForNoPiecesInPathMoveInColumn(){
+	public void shouldReturnTrueForNoPiecesInPathMoveInColumn() {
 		// given
-		from=new Coordinate(1, 1);
-		to=new Coordinate(4,1);
-		Piece piece=chessboard[from.getRow()][from.getColumn()].getPiece();
-		chessboard[2][from.getColumn()].setPiece(new EmptyPiece());;
+		from = new Coordinate(1, 1);
+		to = new Coordinate(4, 1);
+		Piece piece = chessboard[from.getRow()][from.getColumn()].getPiece();
+		chessboard[2][from.getColumn()].setPiece(new EmptyPiece());
+		;
 		// when
-		boolean isValid=piece.isMoveValid(from, to, chessboard);
+		boolean isValid = piece.isMoveValid(from, to, chessboard);
 		// then
-		assertTrue(isValid);	
+		assertTrue(isValid);
 	}
+
 	@Test
 	public void shouldReturnFalseForRookMovedNotInRowNorInColumnWithBlockedPath() {
 		// given
-		from=new Coordinate(1, 1);
-		to=new Coordinate(4, 4);
-		Piece piece=chessboard[from.getRow()][from.getColumn()].getPiece();
+		from = new Coordinate(1, 1);
+		to = new Coordinate(4, 4);
+		Piece piece = chessboard[from.getRow()][from.getColumn()].getPiece();
 		// when
-		boolean isValid=piece.isMoveValid(from, to, chessboard);
+		boolean isValid = piece.isMoveValid(from, to, chessboard);
 		// then
 		assertFalse(isValid);
 	}
-	
+
 	@Test
 	public void shouldReturnFalseForRookMovedNotInRowNorInColumnWithFreePath() {
 		// given
-		from=new Coordinate(1, 1); //index of first rook
-		to=new Coordinate(4, 4);
-		Piece piece=chessboard[from.getRow()][from.getColumn()].getPiece();
-		chessboard[from.getRow()+1][from.getColumn()].setPiece(new EmptyPiece()); //freeing path from pawn
+		from = new Coordinate(1, 1); // index of first rook
+		to = new Coordinate(4, 4);
+		Piece piece = chessboard[from.getRow()][from.getColumn()].getPiece();
+		chessboard[from.getRow() + 1][from.getColumn()].setPiece(new EmptyPiece()); // freeing
+																					// path
+																					// from
+																					// pawn
 		// when
-		boolean isValid=piece.isMoveValid(from, to, chessboard);
+		boolean isValid = piece.isMoveValid(from, to, chessboard);
 		// then
 		assertFalse(isValid);
 	}
+
 	@Test
-	public void shouldReturnTrueForCapturingTheSameColor(){
+	public void shouldReturnFalseForCapturingTheSameColorMoveOne() {
 		// given
-		from=new Coordinate(1, 1);
-		to=new Coordinate(1, 8);
+		from = new Coordinate(1, 1);
+		to = new Coordinate(2, 1);
 		chessboard[1][1].setPiece(new Rook(white));
-		chessboard[1][8].setPiece(new Rook(white));
+		chessboard[2][1].setPiece(new Rook(white));
 		// when
-		boolean doesCaptureWhite=rook.doesMoveCauseCapturingOfTheSameColor(from, to, chessboard);
+		boolean isValid = rook.isMoveValid(from, to, chessboard);
 		// then
-		assertTrue(doesCaptureWhite);
+		assertFalse(isValid);
 	}
-	
+
 	@Test
-	public void shouldReturnFalseForCapturingOtherColor(){
+	public void shouldReturnTrueForCapturingOtherColorMoveOne() {
 		// given
-		from=new Coordinate(1, 1);
-		to=new Coordinate(1, 8);
+		from = new Coordinate(1, 1);
+		to = new Coordinate(2, 1);
 		chessboard[1][1].setPiece(new Rook(white));
-		chessboard[1][8].setPiece(new Rook(black));
+		chessboard[2][1].setPiece(new Rook(black));
 		// when
-		boolean doesCaptureWhite=rook.doesMoveCauseCapturingOfTheSameColor(from, to, chessboard);
+		boolean isValid = rook.isMoveValid(from, to, chessboard);
 		// then
-		assertFalse(doesCaptureWhite);
+		assertTrue(isValid);
 	}
 }
