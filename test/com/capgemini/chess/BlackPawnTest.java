@@ -28,7 +28,7 @@ public class BlackPawnTest {
 		pawn.setFirstMove(false);
 		to=new Coordinate(from.getRow()-1, from.getColumn());
 		// when
-		boolean isAllowed=pawn.isAllowed(from, to, chessboard);
+		boolean isAllowed=pawn.isMoveValid(from, to, chessboard);
 		// then
 		assertTrue(isAllowed);
 	}
@@ -39,7 +39,7 @@ public class BlackPawnTest {
 		pawn.setFirstMove(false);
 		to=new Coordinate(from.getRow()+1, from.getColumn());
 		// when
-		boolean isAllowed=pawn.isAllowed(from, to, chessboard);
+		boolean isAllowed=pawn.isMoveValid(from, to, chessboard);
 		// then
 		assertFalse(isAllowed);
 	}
@@ -50,20 +50,9 @@ public class BlackPawnTest {
 		pawn.setFirstMove(true);
 		to=new Coordinate(from.getRow()-2, from.getColumn());
 		// when
-		boolean isAllowed=pawn.isAllowed(from, to, chessboard);
+		boolean isAllowed=pawn.isMoveValid(from, to, chessboard);
 		// then
 		assertTrue(isAllowed);
-	}
-	
-	@Test
-	public void shouldReturnFalseFirstMove2Backwards() {
-		// given
-		pawn.setFirstMove(true);
-		to=new Coordinate(from.getRow()+2, from.getColumn());
-		// when
-		boolean isAllowed=pawn.isAllowed(from, to, chessboard);
-		// then
-		assertFalse(isAllowed);
 	}
 	
 	@Test
@@ -72,7 +61,7 @@ public class BlackPawnTest {
 		pawn.setFirstMove(true);
 		to=new Coordinate(from.getRow()-1, from.getColumn());
 		// when
-		boolean isAllowed=pawn.isAllowed(from, to, chessboard);
+		boolean isAllowed=pawn.isMoveValid(from, to, chessboard);
 		// then
 		assertTrue(isAllowed);
 	}
@@ -82,7 +71,7 @@ public class BlackPawnTest {
 		pawn.setFirstMove(true);
 		to=new Coordinate(from.getRow()+1, from.getColumn());
 		// when
-		boolean isAllowed=pawn.isAllowed(from, to, chessboard);
+		boolean isAllowed=pawn.isMoveValid(from, to, chessboard);
 		// then
 		assertFalse(isAllowed);
 	}
@@ -93,7 +82,7 @@ public class BlackPawnTest {
 		to=new Coordinate(from.getRow()-1, from.getColumn()+1);
 		chessboard[to.getRow()][to.getColumn()].setPiece(new Pawn(black));
 		// when
-		boolean isCapture=pawn.isAttemptToCapture(from, to, chessboard);
+		boolean isCapture=pawn.isMoveValid(from, to, chessboard);
 		// then
 		assertFalse(isCapture);
 	}
@@ -104,7 +93,7 @@ public class BlackPawnTest {
 		to=new Coordinate(from.getRow()-1, from.getColumn()+1);
 		chessboard[to.getRow()][to.getColumn()].setPiece(new Pawn(white));
 		// when
-		boolean isCapture=pawn.isAttemptToCapture(from, to, chessboard);
+		boolean isCapture=pawn.isMoveValid(from, to, chessboard);
 		// then
 		assertTrue(isCapture);
 	}
@@ -115,20 +104,32 @@ public class BlackPawnTest {
 		to=new Coordinate(from.getRow()-2, from.getColumn()+2);
 		chessboard[to.getRow()][to.getColumn()].setPiece(new Pawn(black));
 		// when
-		boolean isCapture=pawn.isAttemptToCapture(from, to, chessboard);
+		boolean isCapture=pawn.isMoveValid(from, to, chessboard);
 		// then
 		assertFalse(isCapture);
 	}
 	
-/*	@Test
-	public void shouldReturnTrueFor1DiagonalForwardLeftSecondMove(){
+	@Test
+	public void shouldReturnTrueFor1DiagonalForwardLeftSecondMoveNonEmptyWhite(){
 		// given
 		pawn.setFirstMove(false);
 		to=new Coordinate(from.getRow()-1, from.getColumn()-1);
+		chessboard[to.getRow()][to.getColumn()].setPiece(new Pawn(white));
 		// when
-		boolean isAllowed=pawn.isAllowed(from, to, chessboard);
+		boolean isAllowed=pawn.isMoveValid(from, to, chessboard);
 		// then
 		assertTrue(isAllowed);
+	}
+	@Test
+	public void shouldReturnFalseFor1DiagonalForwardLeftSecondMoveNonEmptyBlack(){
+		// given
+		pawn.setFirstMove(false);
+		to=new Coordinate(from.getRow()-1, from.getColumn()-1);
+		chessboard[to.getRow()][to.getColumn()].setPiece(new Pawn(black));
+		// when
+		boolean isAllowed=pawn.isMoveValid(from, to, chessboard);
+		// then
+		assertFalse(isAllowed);
 	}
 	
 	@Test
@@ -137,41 +138,113 @@ public class BlackPawnTest {
 		pawn.setFirstMove(false);
 		to=new Coordinate(from.getRow()-2, from.getColumn()-2);
 		// when
-		boolean isAllowed=pawn.isAllowed(from, to, chessboard);
+		boolean isAllowed=pawn.isMoveValid(from, to, chessboard);
 		// then
 		assertFalse(isAllowed);
 	}
 	
 	@Test
-	public void shouldReturnTrueFor1DiagonalForwardRightSecondMove(){
+	public void shouldReturnTrueFor1DiagonalForwardRightSecondMoveNonEmptyWhite(){
+		// given
+		pawn.setFirstMove(false);
+		to=new Coordinate(from.getRow()-1, from.getColumn()+1);
+		chessboard[to.getRow()][to.getColumn()].setPiece(new Pawn(white));
+		// when
+		boolean isAllowed=pawn.isMoveValid(from, to, chessboard);
+		// then
+		assertTrue(isAllowed);
+	}
+	
+	@Test
+	public void shouldReturnFalseFor1DiagonalForwardRightSecondMoveNonEmptyBlack(){
+		// given
+		pawn.setFirstMove(false);
+		to=new Coordinate(from.getRow()-1, from.getColumn()+1);
+		chessboard[to.getRow()][to.getColumn()].setPiece(new Pawn(black));
+		// when
+		boolean isAllowed=pawn.isMoveValid(from, to, chessboard);
+		// then
+		assertFalse(isAllowed);
+	}
+	
+	@Test
+	public void shouldReturnFalseFor1DiagonalForwardRightSecondMoveEmpty(){
 		// given
 		pawn.setFirstMove(false);
 		to=new Coordinate(from.getRow()-1, from.getColumn()+1);
 		// when
-		boolean isAllowed=pawn.isAllowed(from, to, chessboard);
+		boolean isAllowed=pawn.isMoveValid(from, to, chessboard);
 		// then
-		assertTrue(isAllowed);
+		assertFalse(isAllowed);
 	}
 	
 	@Test
-	public void shouldReturnTrueFor1DiagonalForwardLeftFirstMove(){
+	public void shouldReturnTrueFor1DiagonalForwardLeftFirstMoveNonEmptyWhite(){
 		// given
 		pawn.setFirstMove(true);
 		to=new Coordinate(from.getRow()-1, from.getColumn()-1);
+		chessboard[to.getRow()][to.getColumn()].setPiece(new Pawn(white));
 		// when
-		boolean isAllowed=pawn.isAllowed(from, to, chessboard);
+		boolean isAllowed=pawn.isMoveValid(from, to, chessboard);
+		// then
+		assertTrue(isAllowed);
+	}
+	@Test
+		public void shouldReturnFalseFor1DiagonalForwardLeftFirstMoveNonEmptyBlack(){
+		// given
+		pawn.setFirstMove(true);
+		to=new Coordinate(from.getRow()-1, from.getColumn()-1);
+		chessboard[to.getRow()][to.getColumn()].setPiece(new Pawn(black));
+		// when
+		boolean isAllowed=pawn.isMoveValid(from, to, chessboard);
+		// then
+		assertFalse(isAllowed);
+	}
+	
+	@Test
+	public void shouldReturnFalseFor1DiagonalForwardLeftFirstMoveEmpty(){
+	// given
+	pawn.setFirstMove(true);
+	to=new Coordinate(from.getRow()-1, from.getColumn()-1);
+	// when
+	boolean isAllowed=pawn.isMoveValid(from, to, chessboard);
+	// then
+	assertFalse(isAllowed);
+}
+		
+	@Test
+	public void shouldReturnTrueFor1DiagonalForwardRightFirstMoveNonEmptyWhite(){
+		// given
+		pawn.setFirstMove(true);
+		to=new Coordinate(from.getRow()-1, from.getColumn()+1);
+		chessboard[to.getRow()][to.getColumn()].setPiece(new Pawn(white));
+		// when
+		boolean isAllowed=pawn.isMoveValid(from, to, chessboard);
 		// then
 		assertTrue(isAllowed);
 	}
 	
 	@Test
-	public void shouldReturnTrueFor1DiagonalForwardRightFirstMove(){
+	public void shouldReturnFalseFor1DiagonalForwardRightFirstMoveNonEmptyBlack(){
+		// given
+		pawn.setFirstMove(true);
+		to=new Coordinate(from.getRow()-1, from.getColumn()+1);
+		chessboard[to.getRow()][to.getColumn()].setPiece(new Pawn(black));
+		// when
+		boolean isAllowed=pawn.isMoveValid(from, to, chessboard);
+		// then
+		assertFalse(isAllowed);
+	}
+	
+	@Test
+	public void shouldReturnFalseFor1DiagonalForwardRightFirstMoveEmpty(){
 		// given
 		pawn.setFirstMove(true);
 		to=new Coordinate(from.getRow()-1, from.getColumn()+1);
 		// when
-		boolean isAllowed=pawn.isAllowed(from, to, chessboard);
+		boolean isAllowed=pawn.isMoveValid(from, to, chessboard);
 		// then
-		assertTrue(isAllowed);
-	}*/
+		assertFalse(isAllowed);
+	}
+	
 }
