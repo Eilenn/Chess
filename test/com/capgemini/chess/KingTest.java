@@ -7,7 +7,6 @@ import org.junit.Test;
 
 public class KingTest {
 	private ColorChess white = ColorChess.WHITE;
-	private ColorChess black = ColorChess.BLACK;
 	private King king;
 	private Coordinate from, to;
 	private Board board;

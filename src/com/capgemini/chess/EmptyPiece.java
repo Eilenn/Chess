@@ -1,13 +1,10 @@
 package com.capgemini.chess;
 
-import java.awt.Color;
-
 public class EmptyPiece extends Piece {
 	String empty;
 
 	EmptyPiece(ColorChess color) {
 		super(color);
-		// TODO Auto-generated constructor stub
 	}
 
 	EmptyPiece() {
@@ -42,7 +39,6 @@ public class EmptyPiece extends Piece {
 
 	@Override
 	public boolean isMoveValid(Coordinate from, Coordinate to, Square[][] chessboard) {
-		// TODO Auto-generated method stub
 		return false;
 	}
 

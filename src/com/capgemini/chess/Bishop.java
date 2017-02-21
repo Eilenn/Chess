@@ -3,7 +3,6 @@ package com.capgemini.chess;
 public class Bishop extends Piece {
 	Bishop(ColorChess color) {
 		super(color);
-		// TODO Auto-generated constructor stub
 	}
 
 	@Override

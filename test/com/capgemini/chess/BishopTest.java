@@ -7,7 +7,6 @@ import org.junit.Test;
 //TODO improve and order tests
 public class BishopTest {
 	private ColorChess white = ColorChess.WHITE;
-	private ColorChess black = ColorChess.BLACK;
 	private Bishop bishop;
 	private Coordinate from, to;
 	private Board board;

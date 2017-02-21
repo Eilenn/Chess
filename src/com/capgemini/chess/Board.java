@@ -1,12 +1,17 @@
 package com.capgemini.chess;
 
-//import java.awt.Color;
+//TODO javadocs for every class
+//TODO fix chessboard - delete or move methods from board
+//TODO check indentation for every class
+//TODO delete stubs
+// TODO order methods by importance for every class
+// TODO final for Colors?
+
+
 import java.util.ArrayList;
 
 /**
- * Board represents chess board with 64 square tiles, numbered with combination
- * of letters A-H and numbers 1-8.
- * 
+ * Board represents chess board with 64 square tiles.
  * @author BOWROBEL
  *
  */
@@ -19,9 +24,8 @@ public class Board {
 	private ArrayList<Piece> blackPiecesInGame;
 
 	/**
-	 * creates empty board with 64 squares named from A1 to H8 with
-	 * interchangeable colors, but table is bigger (81 squares) to simplify
-	 * specifying moves
+	 * creates empty board with 81 squares, used only 64 named from 11 to 88 with
+	 * interchangeable colors, 81 to simplify specifying moves
 	 */
 	Board() {
 		chessboard = new Square[9][9];
@@ -95,11 +99,11 @@ public class Board {
 	 * helps in assigning correct colors on the board, changes value from true
 	 * for black to false for white
 	 * 
-	 * @param isBlack
+	 * @param isSquareBlack
 	 * @return
 	 */
-	private boolean changeColorToOpposite(boolean isBlack) {
-		return !isBlack;
+	private boolean changeColorToOpposite(boolean isSquareBlack) {
+		return !isSquareBlack;
 	}
 
 	public ArrayList<Piece> getWhitePiecesInGame() {

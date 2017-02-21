@@ -8,7 +8,6 @@ import org.junit.Test;
 public class KnightTest {
 //TODO improve tests
 	private ColorChess white=ColorChess.WHITE;
-	private ColorChess black=ColorChess.BLACK;
 	private Knight knight;
 	private Coordinate from,to;
 	private Board board;

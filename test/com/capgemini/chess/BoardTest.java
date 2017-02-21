@@ -18,12 +18,12 @@ public class BoardTest {
 	@Test
 	public void shouldCreateEmptyBoard() {
 		// given
-		// Board board = new Board();
-		// when
 		int boardRankSize = board.getChessboard()[0].length;
 		int boardFileSize = board.getChessboard().length;
+		// when
+		int size = boardRankSize * boardFileSize;
 		// then
-		assertEquals(81, boardRankSize * boardFileSize);
+		assertEquals(81, size);
 	}
 
 	@Ignore // visual check if pieces were put correctly

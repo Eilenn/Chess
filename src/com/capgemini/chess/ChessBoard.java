@@ -4,8 +4,6 @@ import java.util.ArrayList;
 
 public class ChessBoard {
 	private Square[][] chessboard;
-	private ColorChess white = ColorChess.WHITE;
-	private ColorChess black = ColorChess.BLACK;
 	private ArrayList<Piece> whitePiecesInGame;
 	private ArrayList<Piece> blackPiecesInGame;
 
