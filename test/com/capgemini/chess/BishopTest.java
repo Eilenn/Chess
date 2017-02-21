@@ -78,4 +78,48 @@ public class BishopTest {
 		// then
 		assertFalse(isAllowed);
 	}
+	
+	@Test
+	public void shouldReturnTrueForUpAndLeftUnoccupied(){
+		// given
+		from=new Coordinate(5, 5);
+		to=new Coordinate(4, 4);
+		// when
+		boolean isValid=bishop.isMoveValid(from, to, chessboard);
+		//then
+		assertTrue(isValid);
+	}
+	
+	@Test
+	public void shouldReturnFalseForUpAndLeftOccupied(){
+		// given
+		from=new Coordinate(5, 5);
+		to=new Coordinate(1, 1);
+		// when
+		boolean isValid=bishop.isMoveValid(from, to, chessboard);
+		//then
+		assertFalse(isValid);
+	}
+	
+	@Test
+	public void shouldReturnTrueForUpAndRightUnoccupied(){
+		// given
+		from=new Coordinate(5, 5);
+		to=new Coordinate(4, 6);
+		// when
+		boolean isValid=bishop.isMoveValid(from, to, chessboard);
+		//then
+		assertTrue(isValid);
+	}
+	
+	@Test
+	public void shouldReturnFalseForUpAndRightOccupied(){
+		// given
+		from=new Coordinate(5, 4);
+		to=new Coordinate(1, 8);
+		// when
+		boolean isValid=bishop.isMoveValid(from, to, chessboard);
+		//then
+		assertFalse(isValid);
+	}
 }

@@ -1,6 +1,8 @@
 package com.capgemini.chess;
 
 public class Rook extends Piece {
+	private ColorChess white = ColorChess.WHITE;
+	private ColorChess black = ColorChess.BLACK;
 
 	Rook(ColorChess color) {
 		super(color);

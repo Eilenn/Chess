@@ -91,4 +91,29 @@ public class RookTest {
 		// then
 		assertFalse(isValid);
 	}
+	@Test
+	public void shouldReturnTrueForCapturingTheSameColor(){
+		// given
+		from=new Coordinate(1, 1);
+		to=new Coordinate(1, 8);
+		chessboard[1][1].setPiece(new Rook(white));
+		chessboard[1][8].setPiece(new Rook(white));
+		// when
+		boolean doesCaptureWhite=rook.doesMoveCauseCapturingOfTheSameColor(from, to, chessboard);
+		// then
+		assertTrue(doesCaptureWhite);
+	}
+	
+	@Test
+	public void shouldReturnFalseForCapturingOtherColor(){
+		// given
+		from=new Coordinate(1, 1);
+		to=new Coordinate(1, 8);
+		chessboard[1][1].setPiece(new Rook(white));
+		chessboard[1][8].setPiece(new Rook(black));
+		// when
+		boolean doesCaptureWhite=rook.doesMoveCauseCapturingOfTheSameColor(from, to, chessboard);
+		// then
+		assertFalse(doesCaptureWhite);
+	}
 }

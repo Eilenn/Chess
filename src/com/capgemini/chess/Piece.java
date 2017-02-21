@@ -22,6 +22,18 @@ public abstract class Piece {
 	public boolean isMoveValid(Coordinate from, Coordinate to, Square[][] chessboard) {
 		return false;
 	}
+	public boolean doesMoveCauseCapturingOfTheSameColor(Coordinate from, Coordinate to, Square[][] chessboard) {
+		Piece pieceMove = chessboard[from.getRow()][from.getColumn()].getPiece();
+		ColorChess movedPieceColor = pieceMove.getColor();
+		Piece pieceAtDestination = chessboard[to.getRow()][to.getColumn()].getPiece();
+		ColorChess destinationPieceColor = pieceAtDestination.getColor();
+		if (pieceAtDestination.equals(new EmptyPiece())) {
+			return false;
+		} else if (destinationPieceColor != movedPieceColor) {
+			return false;
+		} else
+			return true;
+	}
 
 
 }
