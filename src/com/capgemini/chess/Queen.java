@@ -4,13 +4,15 @@ public class Queen extends Piece {
 
 	Queen(ColorChess color) {
 		super(color);
-		// TODO Auto-generated constructor stub
 	}
 
 	@Override
 	public boolean isMoveValid(Coordinate from, Coordinate to, Square[][] chessboard) {
-		// TODO Auto-generated method stub
-		return false;
+		Rook rook=new Rook(this.getColor());
+		Bishop bishop=new Bishop(this.getColor());
+		boolean isValidRook=rook.isMoveValid(from, to, chessboard);
+		boolean isValidBishop=bishop.isMoveValid(from, to, chessboard);
+		return isValidBishop||isValidRook;
 	}
 
 }
