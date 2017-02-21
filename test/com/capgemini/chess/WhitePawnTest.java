@@ -201,4 +201,5 @@ public class WhitePawnTest {
 		// then
 		assertFalse(isAllowed);
 	}
+
 }
