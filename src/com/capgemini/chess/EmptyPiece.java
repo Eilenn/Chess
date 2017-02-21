@@ -3,10 +3,6 @@ package com.capgemini.chess;
 public class EmptyPiece extends Piece {
 	private String empty;
 
-	public EmptyPiece(ColorChess color) {
-		super(color);
-	}
-
 	public EmptyPiece() {
 		this.empty = "empty";
 

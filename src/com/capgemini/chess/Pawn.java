@@ -2,7 +2,6 @@ package com.capgemini.chess;
 
 public class Pawn extends Piece {
 
-	private ColorChess black = ColorChess.BLACK;
 	private boolean isFirstMove = true;
 	private Coordinate[] allowedAnyMoveWhite = { new Coordinate(1, 0) };
 	private Coordinate[] allowedFirstMoveWhite = { new Coordinate(1, 0), new Coordinate(2, 0) };
@@ -47,13 +46,12 @@ public class Pawn extends Piece {
 
 	private boolean isPathBlocked(Coordinate from, Coordinate to, Square[][] chessboard) {
 		Square sq;
-		EmptyPiece empty = new EmptyPiece();
 		if (isBlack()) {
 			sq = chessboard[from.getRow() - 1][from.getColumn()];
 		} else {
 			sq = chessboard[from.getRow() + 1][from.getColumn()];
 		}
-		if (!sq.getPiece().equals(empty)) {
+		if (!sq.isEmpty()) {
 			return true;
 		} else
 			return false;
@@ -92,7 +90,8 @@ public class Pawn extends Piece {
 	}
 
 	private boolean isAttemptToCapture(Coordinate from, Coordinate to, Square[][] chessboard) {
-		if (isFieldEmpty(from, to, chessboard)) {
+		Square sq=chessboard[to.getRow()][to.getColumn()];
+		if (sq.isEmpty()) {
 			return false;
 		} else {
 			if (isBlack()) {
@@ -102,10 +101,6 @@ public class Pawn extends Piece {
 		}
 	}
 
-	private boolean isFieldEmpty(Coordinate from, Coordinate to, Square[][] chessboard) {
-		Piece pieceAtDestination = chessboard[to.getRow()][to.getColumn()].getPiece();
-		Piece empty = new EmptyPiece();
-		return pieceAtDestination.equals(empty);
-	}
+
 
 }
