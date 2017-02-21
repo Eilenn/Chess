@@ -2,6 +2,21 @@ package com.capgemini.chess;
 
 public class Coordinate {
 	private int row;
+	private int column;
+
+	public Coordinate(int row, int column) {
+		this.row = row;
+		this.column = column;
+	}
+
+	public int getRow() {
+		return row;
+	}
+
+	public int getColumn() {
+		return column;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -10,6 +25,7 @@ public class Coordinate {
 		result = prime * result + row;
 		return result;
 	}
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -25,15 +41,5 @@ public class Coordinate {
 			return false;
 		return true;
 	}
-	private int column;
-	Coordinate(int row, int column){
-		this.row=row;
-		this.column=column;
-	}
-	public int getRow() {
-		return row;
-	}
-	public int getColumn() {
-		return column;
-	}
+
 }

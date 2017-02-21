@@ -7,9 +7,11 @@ public abstract class Piece {
 		this.color = color;
 	}
 
-	Piece() {
+	public Piece() {
 
 	}
+
+	public abstract boolean isMoveValid(Coordinate from, Coordinate to, Square[][] chessboard);
 
 	public ColorChess getColor() {
 		return color;
@@ -18,8 +20,6 @@ public abstract class Piece {
 	public void setColor(ColorChess color) {
 		this.color = color;
 	}
-
-	public abstract boolean isMoveValid(Coordinate from, Coordinate to, Square[][] chessboard);
 
 	public boolean isPieceAtDestinationTheSameColorAsPieceMoved(Coordinate from, Coordinate to, Square[][] chessboard) {
 		Piece pieceMove = chessboard[from.getRow()][from.getColumn()].getPiece();

@@ -11,6 +11,10 @@ public class Pawn extends Piece {
 	private Coordinate[] allowedCaptureWhite = { new Coordinate(1, -1), new Coordinate(1, 1) };
 	private Coordinate[] allowedCaptureBlack = { new Coordinate(-1, 1), new Coordinate(-1, -1) };
 
+	public Pawn(ColorChess color) {
+		super(color);
+	}
+
 	public boolean isFirstMove() {
 		return isFirstMove;
 	}
@@ -19,14 +23,39 @@ public class Pawn extends Piece {
 		this.isFirstMove = isFirstMove;
 	}
 
-	Pawn(ColorChess color) {
-		super(color);
+	@Override
+	public boolean isMoveValid(Coordinate from, Coordinate to, Square[][] chessboard) {
+		if (isPieceAtDestinationTheSameColorAsPieceMoved(from, to, chessboard)) {
+			return false;
+		} else {
+			boolean isValid, freePath, isAllowed, isCapture;
+			freePath = !isPathBlocked(from, to, chessboard);
+			isAllowed = isAllowed(from, to, chessboard);
+			isCapture = isAttemptToCapture(from, to, chessboard);
+			isValid = (freePath && isAllowed) || isCapture;
+			return isValid;
+		}
+
 	}
 
 	private boolean isBlack() {
 		if (this.getColor() == black)
 			return true;
 		else
+			return false;
+	}
+
+	private boolean isPathBlocked(Coordinate from, Coordinate to, Square[][] chessboard) {
+		Square sq;
+		EmptyPiece empty = new EmptyPiece();
+		if (isBlack()) {
+			sq = chessboard[from.getRow() - 1][from.getColumn()];
+		} else {
+			sq = chessboard[from.getRow() + 1][from.getColumn()];
+		}
+		if (!sq.getPiece().equals(empty)) {
+			return true;
+		} else
 			return false;
 	}
 
@@ -50,17 +79,6 @@ public class Pawn extends Piece {
 		}
 	}
 
-	private boolean isAttemptToCapture(Coordinate from, Coordinate to, Square[][] chessboard) {
-		if (isFieldEmpty(from, to, chessboard)) {
-			return false;
-		} else {
-			if (isBlack()) {
-				return isOnListOfAllowedMoves(from, to, allowedCaptureBlack);
-			} else
-				return isOnListOfAllowedMoves(from, to, allowedCaptureWhite);
-		}
-	}
-
 	private boolean isOnListOfAllowedMoves(Coordinate from, Coordinate to, Coordinate[] allowedMoves) {
 		int distanceRow = to.getRow() - from.getRow();
 		int distanceColumn = to.getColumn() - from.getColumn();
@@ -73,38 +91,21 @@ public class Pawn extends Piece {
 		return false;
 	}
 
+	private boolean isAttemptToCapture(Coordinate from, Coordinate to, Square[][] chessboard) {
+		if (isFieldEmpty(from, to, chessboard)) {
+			return false;
+		} else {
+			if (isBlack()) {
+				return isOnListOfAllowedMoves(from, to, allowedCaptureBlack);
+			} else
+				return isOnListOfAllowedMoves(from, to, allowedCaptureWhite);
+		}
+	}
+
 	private boolean isFieldEmpty(Coordinate from, Coordinate to, Square[][] chessboard) {
 		Piece pieceAtDestination = chessboard[to.getRow()][to.getColumn()].getPiece();
 		Piece empty = new EmptyPiece();
 		return pieceAtDestination.equals(empty);
 	}
 
-	private boolean isPathBlocked(Coordinate from, Coordinate to, Square[][] chessboard) {
-		Square sq;
-		EmptyPiece empty = new EmptyPiece();
-		if (isBlack()) {
-			sq = chessboard[from.getRow() - 1][from.getColumn()];
-		} else {
-			sq = chessboard[from.getRow() + 1][from.getColumn()];
-		}
-		if (!sq.getPiece().equals(empty)) {
-			return true;
-		} else
-			return false;
-	}
-
-	@Override
-	public boolean isMoveValid(Coordinate from, Coordinate to, Square[][] chessboard) {
-		if (isPieceAtDestinationTheSameColorAsPieceMoved(from, to, chessboard)) {
-			return false;
-		} else {
-			boolean isValid, freePath, isAllowed, isCapture;
-			freePath = !isPathBlocked(from, to, chessboard);
-			isAllowed = isAllowed(from, to, chessboard);
-			isCapture = isAttemptToCapture(from, to, chessboard);
-			isValid = (freePath && isAllowed) || isCapture;
-			return isValid;
-		}
-
-	}
 }

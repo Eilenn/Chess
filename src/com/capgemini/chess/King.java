@@ -1,12 +1,12 @@
 package com.capgemini.chess;
 
 public class King extends Piece {
-//TODO write check validation
+	// TODO write check validation
 	private Coordinate[] allowedMoves = { new Coordinate(1, 1), new Coordinate(-1, 1), new Coordinate(-1, -1),
 			new Coordinate(1, -1), new Coordinate(1, 0), new Coordinate(0, 1), new Coordinate(-1, 0),
 			new Coordinate(0, -1) };
 
-	King(ColorChess color) {
+	public King(ColorChess color) {
 		super(color);
 	}
 

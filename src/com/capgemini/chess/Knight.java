@@ -1,8 +1,11 @@
 package com.capgemini.chess;
 
 public class Knight extends Piece {
+	private Coordinate[] allowedMoves = { new Coordinate(2, 1), new Coordinate(-2, 1), new Coordinate(-2, -1),
+			new Coordinate(2, -1), new Coordinate(1, 2), new Coordinate(1, -2), new Coordinate(-1, 2),
+			new Coordinate(-1, -2) };
 
-	Knight(ColorChess color) {
+	public Knight(ColorChess color) {
 		super(color);
 	}
 
@@ -22,9 +25,5 @@ public class Knight extends Piece {
 			return false;
 		}
 	}
-
-	private Coordinate[] allowedMoves = { new Coordinate(2, 1), new Coordinate(-2, 1), new Coordinate(-2, -1),
-			new Coordinate(2, -1), new Coordinate(1, 2), new Coordinate(1, -2), new Coordinate(-1, 2),
-			new Coordinate(-1, -2) };
 
 }

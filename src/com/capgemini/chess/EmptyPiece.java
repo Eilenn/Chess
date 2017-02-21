@@ -1,13 +1,13 @@
 package com.capgemini.chess;
 
 public class EmptyPiece extends Piece {
-	String empty;
+	private String empty;
 
-	EmptyPiece(ColorChess color) {
+	public EmptyPiece(ColorChess color) {
 		super(color);
 	}
 
-	EmptyPiece() {
+	public EmptyPiece() {
 		this.empty = "empty";
 
 	}
@@ -36,7 +36,7 @@ public class EmptyPiece extends Piece {
 			return false;
 		return true;
 	}
-
+//TODO fix implementation?
 	@Override
 	public boolean isMoveValid(Coordinate from, Coordinate to, Square[][] chessboard) {
 		return false;

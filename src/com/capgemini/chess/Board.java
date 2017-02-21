@@ -1,17 +1,18 @@
 package com.capgemini.chess;
 
 //TODO javadocs for every class
+
 //TODO fix chessboard - delete or move methods from board
 //TODO check indentation for every class
 //TODO delete stubs
 // TODO order methods by importance for every class
 // TODO final for Colors?
 
-
 import java.util.ArrayList;
 
 /**
  * Board represents chess board with 64 square tiles.
+ * 
  * @author BOWROBEL
  *
  */
@@ -24,10 +25,10 @@ public class Board {
 	private ArrayList<Piece> blackPiecesInGame;
 
 	/**
-	 * creates empty board with 81 squares, used only 64 named from 11 to 88 with
-	 * interchangeable colors, 81 to simplify specifying moves
+	 * creates empty board with 81 squares, used only 64 named from 11 to 88
+	 * with interchangeable colors, 81 to simplify specifying moves
 	 */
-	Board() {
+	public Board() {
 		chessboard = new Square[9][9];
 		boolean isBlack = true;
 		for (int rank = 1; rank <= 8; rank++) {
@@ -42,6 +43,46 @@ public class Board {
 			}
 			isBlack = changeColorToOpposite(isBlack);
 		}
+	}
+
+	/**
+	 * puts all types of pieces in their correct starting position.
+	 */
+	public void initializeBoard() {
+		createWhitePieces();
+		createBlackPieces();
+		int rowOfWhitePawnsIndex = 8;
+		int rowOfBlackPawnsIndex = 8;
+		for (int file = 1; file <= 8; file++) {
+			Piece whitePieceToAdd = whitePiecesInGame.get(file - 1);
+			Piece whitePieceToAddSecondRow = whitePiecesInGame.get(rowOfWhitePawnsIndex++);
+			chessboard[1][file].setPiece(whitePieceToAdd);
+			chessboard[2][file].setPiece(whitePieceToAddSecondRow);
+			Piece blackPieceToAdd = blackPiecesInGame.get(file - 1);
+			Piece blackPieceToAddSeventhRow = blackPiecesInGame.get(rowOfBlackPawnsIndex++);
+			chessboard[8][file].setPiece(blackPieceToAdd);
+			chessboard[7][file].setPiece(blackPieceToAddSeventhRow);
+		}
+	}
+
+	public ArrayList<Piece> getWhitePiecesInGame() {
+		return whitePiecesInGame;
+	}
+
+	public ArrayList<Piece> getBlackPiecesInGame() {
+		return blackPiecesInGame;
+	}
+
+	public void setWhitePiecesInGame(ArrayList<Piece> whitePiecesInGame) {
+		this.whitePiecesInGame = whitePiecesInGame;
+	}
+
+	public void setBlackPiecesInGame(ArrayList<Piece> blackPiecesInGame) {
+		this.blackPiecesInGame = blackPiecesInGame;
+	}
+
+	public Square[][] getChessboard() {
+		return chessboard;
 	}
 
 	private void createWhitePieces() {
@@ -76,26 +117,6 @@ public class Board {
 	}
 
 	/**
-	 * puts all types of pieces in their correct starting position.
-	 */
-	public void initializeBoard() {
-		createWhitePieces();
-		createBlackPieces();
-		int rowOfWhitePawnsIndex = 8;
-		int rowOfBlackPawnsIndex = 8;
-		for (int file = 1; file <= 8; file++) {
-			Piece whitePieceToAdd = whitePiecesInGame.get(file - 1);
-			Piece whitePieceToAddSecondRow = whitePiecesInGame.get(rowOfWhitePawnsIndex++);
-			chessboard[1][file].setPiece(whitePieceToAdd);
-			chessboard[2][file].setPiece(whitePieceToAddSecondRow);
-			Piece blackPieceToAdd = blackPiecesInGame.get(file - 1);
-			Piece blackPieceToAddSeventhRow = blackPiecesInGame.get(rowOfBlackPawnsIndex++);
-			chessboard[8][file].setPiece(blackPieceToAdd);
-			chessboard[7][file].setPiece(blackPieceToAddSeventhRow);
-		}
-	}
-
-	/**
 	 * helps in assigning correct colors on the board, changes value from true
 	 * for black to false for white
 	 * 
@@ -104,26 +125,6 @@ public class Board {
 	 */
 	private boolean changeColorToOpposite(boolean isSquareBlack) {
 		return !isSquareBlack;
-	}
-
-	public ArrayList<Piece> getWhitePiecesInGame() {
-		return whitePiecesInGame;
-	}
-
-	public ArrayList<Piece> getBlackPiecesInGame() {
-		return blackPiecesInGame;
-	}
-
-	public void setWhitePiecesInGame(ArrayList<Piece> whitePiecesInGame) {
-		this.whitePiecesInGame = whitePiecesInGame;
-	}
-
-	public void setBlackPiecesInGame(ArrayList<Piece> blackPiecesInGame) {
-		this.blackPiecesInGame = blackPiecesInGame;
-	}
-
-	public Square[][] getChessboard() {
-		return chessboard;
 	}
 
 }

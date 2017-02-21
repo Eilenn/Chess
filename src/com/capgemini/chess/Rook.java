@@ -2,7 +2,7 @@ package com.capgemini.chess;
 
 public class Rook extends Piece {
 
-	Rook(ColorChess color) {
+	public Rook(ColorChess color) {
 		super(color);
 	}
 
@@ -15,7 +15,8 @@ public class Rook extends Piece {
 		}
 		// if it doesn't
 		else {
-			// check if the move is horizontal or vertical - if it's not, return false
+			// check if the move is horizontal or vertical - if it's not, return
+			// false
 			if (isMoveAllowedForRook(from, to)) {
 				// check if the move doesn't cause leaping over a piece, if it
 				// does - return false
@@ -23,11 +24,15 @@ public class Rook extends Piece {
 					return false;
 				} else
 					return true;
-			} 
-			else {
+			} else {
 				return false;
 			}
 		}
+	}
+
+	// is this move allowed for rook
+	private boolean isMoveAllowedForRook(Coordinate from, Coordinate to) {
+		return isDestinationInTheSameRow(from, to) || isDestinationInTheSameColumn(from, to);
 	}
 
 	private boolean isDestinationInTheSameRow(Coordinate from, Coordinate to) {
@@ -40,11 +45,6 @@ public class Rook extends Piece {
 		int fromY = from.getColumn();
 		int toY = to.getColumn();
 		return toY == fromY;
-	}
-
-	// is this move allowed for rook
-	private boolean isMoveAllowedForRook(Coordinate from, Coordinate to) {
-		return isDestinationInTheSameRow(from, to) || isDestinationInTheSameColumn(from, to);
 	}
 
 	private boolean isPathToDestinationOccupied(Coordinate from, Coordinate to, Square[][] chessboard) {

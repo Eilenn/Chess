@@ -17,13 +17,13 @@ public class Bishop extends Piece {
 		}
 	}
 
-	public boolean isMoveAllowed(Coordinate from, Coordinate to) {
+	private boolean isMoveAllowed(Coordinate from, Coordinate to) {
 		int rowDiff = Math.abs(from.getRow() - to.getRow());
 		int colDiff = Math.abs(from.getColumn() - to.getColumn());
 		return rowDiff == colDiff;
 	}
 
-	public boolean isPathToDestinationOccupied(Coordinate from, Coordinate to, Square[][] chessboard) {
+	private boolean isPathToDestinationOccupied(Coordinate from, Coordinate to, Square[][] chessboard) {
 		int fromRowIndex = from.getRow();
 		int toRowIndex = to.getRow();
 		int rowOffset = (fromRowIndex < toRowIndex) ? 1 : -1;
