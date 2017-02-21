@@ -4,7 +4,7 @@ import static org.junit.Assert.*;
 
 import org.junit.Before;
 import org.junit.Test;
-
+//TODO improve and order tests
 public class BishopTest {
 	private ColorChess white = ColorChess.WHITE;
 	private ColorChess black = ColorChess.BLACK;

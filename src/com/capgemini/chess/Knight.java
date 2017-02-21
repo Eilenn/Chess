@@ -8,20 +8,30 @@ public class Knight extends Piece {
 
 	// TODO check corners?
 	@Override
-	public boolean isMoveValid(Coordinate from, Coordinate to) {
-		int distanceRow = to.getRow() - from.getRow();
-		int distanceColumn = to.getColumn() - from.getColumn();
-		Coordinate distance = new Coordinate(distanceRow, distanceColumn);
-		for (Coordinate diff : allowedMoves) {
-			if (distance.equals(diff)) {
-				return true;
+	public boolean isMoveValid(Coordinate from, Coordinate to, Square[][] chessboard) {
+		if (doesMoveCauseCapturingOfTheSameColor(from, to, chessboard)) {
+			return false;
+		} else {
+			int distanceRow = to.getRow() - from.getRow();
+			int distanceColumn = to.getColumn() - from.getColumn();
+			Coordinate distance = new Coordinate(distanceRow, distanceColumn);
+			for (Coordinate diff : allowedMoves) {
+				if (distance.equals(diff)) {
+					return true;
+				}
 			}
+			return false;
 		}
-		return false;
 	}
 
 	private Coordinate[] allowedMoves = { new Coordinate(2, 1), new Coordinate(-2, 1), new Coordinate(-2, -1),
 			new Coordinate(2, -1), new Coordinate(1, 2), new Coordinate(1, -2), new Coordinate(-1, 2),
 			new Coordinate(-1, -2) };
+
+	@Override
+	public boolean isMoveValid(Coordinate from, Coordinate to) {
+		// TODO Auto-generated method stub
+		return false;
+	}
 
 }

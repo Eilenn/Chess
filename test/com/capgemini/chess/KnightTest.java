@@ -11,89 +11,95 @@ public class KnightTest {
 	private ColorChess black=ColorChess.BLACK;
 	private Knight knight;
 	private Coordinate from,to;
+	private Board board;
+	private Square[][] chessboard;
 	private int rowDiff, colDiff, rowStart, colStart;
 	@Before
 	public void init(){
 		knight=new Knight(white);
 		rowStart=3;
 		colStart=3;
+		board = new Board();
+		board.initializeBoard();
+		chessboard = board.getChessboard();
+		chessboard[rowStart][colStart].setPiece(knight);
 	}
 	@Test
-	public void shouldReturnTrueForOneUpTwoLeft() {
+	public void shouldReturnFalseForOneUpTwoLeftDestinationOccupied() {
 		//given
 		rowDiff=-1;
 		colDiff=-2;
 		from=new Coordinate(rowStart,colStart);
 		to=new Coordinate(rowStart+rowDiff,colStart+colDiff);
 		// when
-		boolean canMove=knight.isMoveValid(from, to);
+		boolean canMove=knight.isMoveValid(from, to,chessboard);
 		// then
-		assertTrue(canMove);
+		assertFalse(canMove);
 	}
 	
 	@Test
-	public void shouldReturnTrueForOneDownTwoLeft() {
+	public void shouldReturnTrueForOneDownTwoLeftDestinationFree() {
 		//given
 		rowDiff=1;
 		colDiff=-2;
 		from=new Coordinate(rowStart,colStart);
 		to=new Coordinate(rowStart+rowDiff,colStart+colDiff);
 		// when
-		boolean canMove=knight.isMoveValid(from, to);
+		boolean canMove=knight.isMoveValid(from, to,chessboard);
 		// then
 		assertTrue(canMove);
 	}
 	
 	@Test
-	public void shouldReturnTrueForOneDownTwoRight() {
+	public void shouldReturnTrueForOneDownTwoRightDestinationFree() {
 		//given
 		rowDiff=1;
 		colDiff=2;
 		from=new Coordinate(rowStart,colStart);
 		to=new Coordinate(rowStart+rowDiff,colStart+colDiff);
 		// when
-		boolean canMove=knight.isMoveValid(from, to);
+		boolean canMove=knight.isMoveValid(from, to,chessboard);
 		// then
 		assertTrue(canMove);
 	}
 	
 	@Test
-	public void shouldReturnTrueForOneUpTwoRight() {
+	public void shouldReturnFalseForOneUpTwoRightDestinationOccupied() {
 		//given
 		rowDiff=-1;
 		colDiff=2;
 		from=new Coordinate(rowStart,colStart);
 		to=new Coordinate(rowStart+rowDiff,colStart+colDiff);
 		// when
-		boolean canMove=knight.isMoveValid(from, to);
+		boolean canMove=knight.isMoveValid(from, to,chessboard);
 		// then
-		assertTrue(canMove);
+		assertFalse(canMove);
 	}
 	
 	@Test
-	public void shouldReturnTrueForTwoUpOneRight() {
+	public void shouldReturnFalseForTwoUpOneRightDestinationOccupied() {
 		//given
 		rowDiff=-2;
 		colDiff=1;
 		from=new Coordinate(rowStart,colStart);
 		to=new Coordinate(rowStart+rowDiff,colStart+colDiff);
 		// when
-		boolean canMove=knight.isMoveValid(from, to);
+		boolean canMove=knight.isMoveValid(from, to,chessboard);
 		// then
-		assertTrue(canMove);
+		assertFalse(canMove);
 	}
 	
 	@Test
-	public void shouldReturnTrueForTwoUpOneLeft() {
+	public void shouldReturnFalseForTwoUpOneLeftDestinationOccupied() {
 		//given
 		rowDiff=-2;
 		colDiff=-1;
 		from=new Coordinate(rowStart,colStart);
 		to=new Coordinate(rowStart+rowDiff,colStart+colDiff);
 		// when
-		boolean canMove=knight.isMoveValid(from, to);
+		boolean canMove=knight.isMoveValid(from, to,chessboard);
 		// then
-		assertTrue(canMove);
+		assertFalse(canMove);
 	}
 	
 	@Test
@@ -104,7 +110,7 @@ public class KnightTest {
 		from=new Coordinate(rowStart,colStart);
 		to=new Coordinate(rowStart+rowDiff,colStart+colDiff);
 		// when
-		boolean canMove=knight.isMoveValid(from, to);
+		boolean canMove=knight.isMoveValid(from, to,chessboard);
 		// then
 		assertTrue(canMove);
 	}
@@ -117,7 +123,7 @@ public class KnightTest {
 		from=new Coordinate(rowStart,colStart);
 		to=new Coordinate(rowStart+rowDiff,colStart+colDiff);
 		// when
-		boolean canMove=knight.isMoveValid(from, to);
+		boolean canMove=knight.isMoveValid(from, to,chessboard);
 		// then
 		assertTrue(canMove);
 	}
@@ -130,7 +136,7 @@ public class KnightTest {
 		from=new Coordinate(rowStart,colStart);
 		to=new Coordinate(rowStart+rowDiff,colStart+colDiff);
 		// when
-		boolean canMove=knight.isMoveValid(from, to);
+		boolean canMove=knight.isMoveValid(from, to,chessboard);
 		// then
 		assertFalse(canMove);
 	}
