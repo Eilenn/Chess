@@ -88,6 +88,39 @@ public class WhitePawnTest {
 		assertFalse(isAllowed);
 	}
 	
+	@Test
+	public void shouldReturnTrueForAttemptToCaptureBlack(){
+		// given
+		to=new Coordinate(from.getRow()+1, from.getColumn()-1);
+		chessboard[to.getRow()][to.getColumn()].setPiece(new Pawn(black));
+		// when
+		boolean isCapture=pawn.isAttemptToCapture(from, to, chessboard);
+		// then
+		assertTrue(isCapture);
+	}
+	
+	@Test
+	public void shouldReturnFalseForAttemptToCaptureWhite(){
+		// given
+		to=new Coordinate(from.getRow()+1, from.getColumn()-1);
+		chessboard[to.getRow()][to.getColumn()].setPiece(new Pawn(white));
+		// when
+		boolean isCapture=pawn.isAttemptToCapture(from, to, chessboard);
+		// then
+		assertFalse(isCapture);
+	}
+	
+	@Test
+	public void shouldReturnFalseForAttemptToCaptureBlackOnUnallowedField(){
+		// given
+		to=new Coordinate(from.getRow()+2, from.getColumn()+2);
+		chessboard[to.getRow()][to.getColumn()].setPiece(new Pawn(black));
+		// when
+		boolean isCapture=pawn.isAttemptToCapture(from, to, chessboard);
+		// then
+		assertFalse(isCapture);
+	}
+	
 /*	@Test
 	public void shouldReturnTrueFor1DiagonalForwardLeftSecondMove(){
 		// given

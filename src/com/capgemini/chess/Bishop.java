@@ -8,7 +8,7 @@ public class Bishop extends Piece {
 
 	@Override
 	public boolean isMoveValid(Coordinate from, Coordinate to, Square[][] chessboard) {
-		if (doesMoveCauseCapturingOfTheSameColor(from, to, chessboard)) {
+		if (isPieceAtDestinationTheSameColorAsPieceMoved(from, to, chessboard)) {
 			return false;
 		} else {
 			if (isMoveAllowed(from, to) && !isPathToDestinationOccupied(from, to, chessboard)) {

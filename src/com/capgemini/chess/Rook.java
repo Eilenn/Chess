@@ -12,7 +12,7 @@ public class Rook extends Piece {
 	public boolean isMoveValid(Coordinate from, Coordinate to, Square[][] chessboard) {
 		// check if move causes capturing of the same team, if so - it is not
 		// valid
-		if (doesMoveCauseCapturingOfTheSameColor(from, to, chessboard)) {
+		if (isPieceAtDestinationTheSameColorAsPieceMoved(from, to, chessboard)) {
 			return false;
 		}
 		// if it doesn't

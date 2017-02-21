@@ -21,7 +21,7 @@ public abstract class Piece {
 
 	public abstract boolean isMoveValid(Coordinate from, Coordinate to, Square[][] chessboard);
 
-	public boolean doesMoveCauseCapturingOfTheSameColor(Coordinate from, Coordinate to, Square[][] chessboard) {
+	public boolean isPieceAtDestinationTheSameColorAsPieceMoved(Coordinate from, Coordinate to, Square[][] chessboard) {
 		Piece pieceMove = chessboard[from.getRow()][from.getColumn()].getPiece();
 		ColorChess movedPieceColor = pieceMove.getColor();
 		Piece pieceAtDestination = chessboard[to.getRow()][to.getColumn()].getPiece();

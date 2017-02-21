@@ -12,7 +12,7 @@ public class Queen extends Piece {
 
 	@Override
 	public boolean isMoveValid(Coordinate from, Coordinate to, Square[][] chessboard) {
-		if (doesMoveCauseCapturingOfTheSameColor(from, to, chessboard)) {
+		if (isPieceAtDestinationTheSameColorAsPieceMoved(from, to, chessboard)) {
 			return false;
 		} else {
 			int distanceRow = to.getRow() - from.getRow();

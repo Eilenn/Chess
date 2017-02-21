@@ -6,7 +6,8 @@ import org.junit.runner.notification.Failure;
 
 public class TestRunner {
 	public static void main(String[] args) {
-		Result result = JUnitCore.runClasses(BoardTest.class, KnightTest.class,RookTest.class, BishopTest.class, QueenTest.class);
+		Result result = JUnitCore.runClasses(BoardTest.class, KnightTest.class,RookTest.class, BishopTest.class, QueenTest.class,
+				WhitePawnTest.class,BlackPawnTest.class);
 
 		for (Failure failure : result.getFailures()) {
 			System.out.println(failure.toString());
