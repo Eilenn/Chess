@@ -43,10 +43,4 @@ public class Bishop extends Piece {
 		return isOccupied;
 	}
 
-	@Override
-	public boolean isMoveValid(Coordinate from, Coordinate to) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
 }

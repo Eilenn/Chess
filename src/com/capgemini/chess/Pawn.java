@@ -11,17 +11,17 @@ public class Pawn extends Piece {
 		// TODO Auto-generated constructor stub
 	}
 
-	@Override
-	public boolean isMoveValid(Coordinate from, Coordinate to) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
 	private boolean isBlack() {
 		if (this.getColor() == black)
 			return true;
 		else
 			return false;
+	}
+
+	@Override
+	public boolean isMoveValid(Coordinate from, Coordinate to, Square[][] chessboard) {
+		// TODO Auto-generated method stub
+		return false;
 	}
 
 }

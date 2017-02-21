@@ -84,9 +84,4 @@ public class Rook extends Piece {
 		}
 	}
 
-	@Override
-	public boolean isMoveValid(Coordinate from, Coordinate to) {
-		// TODO Auto-generated method stub
-		return false;
-	}
 }

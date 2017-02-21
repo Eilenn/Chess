@@ -2,21 +2,19 @@ package com.capgemini.chess;
 
 import java.awt.Color;
 
-public class EmptyPiece extends Piece{
+public class EmptyPiece extends Piece {
 	String empty;
+
 	EmptyPiece(ColorChess color) {
 		super(color);
 		// TODO Auto-generated constructor stub
 	}
-	EmptyPiece(){
-		this.empty="empty";
-		
+
+	EmptyPiece() {
+		this.empty = "empty";
+
 	}
-	@Override
-	public boolean isMoveValid(Coordinate from, Coordinate to) {
-		// TODO Auto-generated method stub
-		return false;
-	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -24,6 +22,7 @@ public class EmptyPiece extends Piece{
 		result = prime * result + ((empty == null) ? 0 : empty.hashCode());
 		return result;
 	}
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -40,8 +39,11 @@ public class EmptyPiece extends Piece{
 			return false;
 		return true;
 	}
-	
 
-
+	@Override
+	public boolean isMoveValid(Coordinate from, Coordinate to, Square[][] chessboard) {
+		// TODO Auto-generated method stub
+		return false;
+	}
 
 }

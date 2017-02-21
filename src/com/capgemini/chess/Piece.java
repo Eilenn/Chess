@@ -2,15 +2,14 @@ package com.capgemini.chess;
 
 public abstract class Piece {
 	private ColorChess color;
-	
-	Piece(ColorChess color){
-		this.color=color;
-	}
-	Piece(){
-		
+
+	Piece(ColorChess color) {
+		this.color = color;
 	}
 
-	public abstract boolean isMoveValid(Coordinate from, Coordinate to);
+	Piece() {
+
+	}
 
 	public ColorChess getColor() {
 		return color;
@@ -19,9 +18,9 @@ public abstract class Piece {
 	public void setColor(ColorChess color) {
 		this.color = color;
 	}
-	public boolean isMoveValid(Coordinate from, Coordinate to, Square[][] chessboard) {
-		return false;
-	}
+
+	public abstract boolean isMoveValid(Coordinate from, Coordinate to, Square[][] chessboard);
+
 	public boolean doesMoveCauseCapturingOfTheSameColor(Coordinate from, Coordinate to, Square[][] chessboard) {
 		Piece pieceMove = chessboard[from.getRow()][from.getColumn()].getPiece();
 		ColorChess movedPieceColor = pieceMove.getColor();
@@ -34,6 +33,5 @@ public abstract class Piece {
 		} else
 			return true;
 	}
-
 
 }

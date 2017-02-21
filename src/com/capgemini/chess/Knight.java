@@ -6,7 +6,6 @@ public class Knight extends Piece {
 		super(color);
 	}
 
-	// TODO check corners?
 	@Override
 	public boolean isMoveValid(Coordinate from, Coordinate to, Square[][] chessboard) {
 		if (doesMoveCauseCapturingOfTheSameColor(from, to, chessboard)) {
@@ -27,11 +26,5 @@ public class Knight extends Piece {
 	private Coordinate[] allowedMoves = { new Coordinate(2, 1), new Coordinate(-2, 1), new Coordinate(-2, -1),
 			new Coordinate(2, -1), new Coordinate(1, 2), new Coordinate(1, -2), new Coordinate(-1, 2),
 			new Coordinate(-1, -2) };
-
-	@Override
-	public boolean isMoveValid(Coordinate from, Coordinate to) {
-		// TODO Auto-generated method stub
-		return false;
-	}
 
 }

@@ -10,7 +10,7 @@ public class King extends Piece {
 	}
 
 	@Override
-	public boolean isMoveValid(Coordinate from, Coordinate to) {
+	public boolean isMoveValid(Coordinate from, Coordinate to, Square[][] chessboard) {
 		// TODO Auto-generated method stub
 		return false;
 	}
