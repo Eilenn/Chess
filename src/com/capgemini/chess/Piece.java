@@ -11,7 +11,6 @@ public abstract class Piece {
 	}
 
 	public Piece() {
-
 	}
 
 	public abstract boolean isMoveValid(Coordinate from, Coordinate to, Square[][] chessboard);
@@ -44,7 +43,7 @@ public abstract class Piece {
 		Piece pieceBeingMoved = chessboard[from.getRow()][from.getColumn()].getPiece();
 		ColorChess pieceBeingMovedColor = pieceBeingMoved.getColor();
 		ColorChess opponentColor = returnOpponentColor(pieceBeingMovedColor);
-		Piece pieceAtDestination=chessboard[to.getRow()][to.getColumn()].getPiece();
+		Piece pieceAtDestination = chessboard[to.getRow()][to.getColumn()].getPiece();
 		chessboard[to.getRow()][to.getColumn()].setPiece(pieceBeingMoved);
 		Piece empty = new EmptyPiece();
 		chessboard[from.getRow()][from.getColumn()].setPiece(empty);
@@ -59,12 +58,12 @@ public abstract class Piece {
 				ColorChess pieceColor = piece.getColor();
 				if (!sq.isEmpty() && (pieceColor == opponentColor)) {
 					if (piece.isMoveValid(fromOpponent, kingsPosition, chessboard)) {
-						// return piece to original position because move is impossible as it causes self check
+						// return piece to original position because move is
+						// impossible as it causes self check
 						chessboard[from.getRow()][from.getColumn()].setPiece(pieceBeingMoved);
 						chessboard[to.getRow()][to.getColumn()].setPiece(pieceAtDestination);
 						return true;
 					}
-
 				}
 			}
 		}
@@ -96,7 +95,5 @@ public abstract class Piece {
 			}
 		}
 		return kingsPosition;
-
 	}
-
 }

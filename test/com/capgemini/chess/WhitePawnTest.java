@@ -115,7 +115,6 @@ public class WhitePawnTest {
 		// given
 		pawn.setFirstMove(false);
 		to=new Coordinate(from.getRow()+1, from.getColumn()-1);
-		System.out.println(chessboard[to.getRow()][to.getColumn()].getPiece().toString());
 		// when
 		boolean isAllowed=pawn.isMoveValid(from, to, chessboard);
 		// then
