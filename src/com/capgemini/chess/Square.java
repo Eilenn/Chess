@@ -15,10 +15,6 @@ public class Square {
 		this.piece = piece;
 	}
 
-	public ColorChess getColor() {
-		return color;
-	}
-
 	public Piece getPiece() {
 		return piece;
 	}
@@ -26,7 +22,8 @@ public class Square {
 	public void setPiece(Piece piece) {
 		this.piece = piece;
 	}
-	public boolean isEmpty(){
+
+	public boolean isEmpty() {
 		return this.getPiece().equals(new EmptyPiece());
 	}
 

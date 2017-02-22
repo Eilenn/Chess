@@ -19,9 +19,6 @@ public abstract class Piece {
 		return color;
 	}
 
-	public void setColor(ColorChess color) {
-		this.color = color;
-	}
 	public boolean canMoveBeMade(Coordinate from, Coordinate to, Square[][] chessboard){
 		return isMoveValid(from, to, chessboard)&&(!wouldMoveCauseCheck(from, to, chessboard));
 	}

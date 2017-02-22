@@ -65,22 +65,6 @@ public class Board {
 		}
 	}
 
-	public ArrayList<Piece> getWhitePiecesInGame() {
-		return whitePiecesInGame;
-	}
-
-	public ArrayList<Piece> getBlackPiecesInGame() {
-		return blackPiecesInGame;
-	}
-
-	public void setWhitePiecesInGame(ArrayList<Piece> whitePiecesInGame) {
-		this.whitePiecesInGame = whitePiecesInGame;
-	}
-
-	public void setBlackPiecesInGame(ArrayList<Piece> blackPiecesInGame) {
-		this.blackPiecesInGame = blackPiecesInGame;
-	}
-
 	public Square[][] getChessboard() {
 		return chessboard;
 	}

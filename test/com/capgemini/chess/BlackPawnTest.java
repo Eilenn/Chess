@@ -247,4 +247,24 @@ public class BlackPawnTest {
 		assertFalse(isAllowed);
 	}
 	
+	@Test
+	public void shouldReturnTrueForFirstMove(){
+		// given
+		to=new Coordinate(from.getRow()-1, from.getColumn());
+		// when
+		boolean isFirst=pawn.isFirstMove();
+		// then
+		assertTrue(isFirst);
+	}
+	
+	@Test
+	public void shouldReturnFalseForSecondMove(){
+		// given
+		to=new Coordinate(from.getRow()-1, from.getColumn());
+		// when
+		pawn.setFirstMove(false);
+		boolean isFirst=pawn.isFirstMove();
+		// then
+		assertFalse(isFirst);
+	}
 }
