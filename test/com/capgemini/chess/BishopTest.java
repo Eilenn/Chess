@@ -27,7 +27,7 @@ public class BishopTest {
 		chessboard[from.getRow()][from.getColumn()].setPiece(bishop);
 		to=new Coordinate(2, 2);
 		// when
-		boolean isAllowed=bishop.isMoveValid(from, to,chessboard);
+		boolean isAllowed=bishop.canMoveBeMade(from, to,chessboard);
 		// then
 		assertFalse(isAllowed);
 	}
@@ -38,43 +38,47 @@ public class BishopTest {
 		chessboard[from.getRow()][from.getColumn()].setPiece(bishop);
 		to=new Coordinate(2, 4);
 		// when
-		boolean isAllowed=bishop.isMoveValid(from, to,chessboard);
+		boolean isAllowed=bishop.canMoveBeMade(from, to,chessboard);
 		// then
 		assertFalse(isAllowed);
 	}
 	@Test
 	public void shouldReturnTrueForDownAndLeft() {
 		// given
+		chessboard[from.getRow()][from.getColumn()].setPiece(bishop);
 		to=new Coordinate(4, 2);
 		// when
-		boolean isAllowed=bishop.isMoveValid(from, to,chessboard);
+		boolean isAllowed=bishop.canMoveBeMade(from, to,chessboard);
 		// then
 		assertTrue(isAllowed);
 	}
 	@Test
 	public void shouldReturnTrueForDownAndRight() {
 		// given
+		chessboard[from.getRow()][from.getColumn()].setPiece(bishop);
 		to=new Coordinate(4, 4);
 		// when
-		boolean isAllowed=bishop.isMoveValid(from, to, chessboard);
+		boolean isAllowed=bishop.canMoveBeMade(from, to, chessboard);
 		// then
 		assertTrue(isAllowed);
 	}
 	@Test
 	public void shouldReturnTrueForDiagonalMoreThan1FieldMove() {
 		// given
+		chessboard[from.getRow()][from.getColumn()].setPiece(bishop);
 		to=new Coordinate(6, 6);
 		// when
-		boolean isAllowed=bishop.isMoveValid(from, to, chessboard);
+		boolean isAllowed=bishop.canMoveBeMade(from, to, chessboard);
 		// then
 		assertTrue(isAllowed);
 	}
 	@Test
 	public void shouldReturnFalseForNotDiagonal() {
 		// given
+		chessboard[from.getRow()][from.getColumn()].setPiece(bishop);
 		to=new Coordinate(3, 4);
 		// when
-		boolean isAllowed=bishop.isMoveValid(from, to,chessboard);
+		boolean isAllowed=bishop.canMoveBeMade(from, to,chessboard);
 		// then
 		assertFalse(isAllowed);
 	}
@@ -84,8 +88,9 @@ public class BishopTest {
 		// given
 		from=new Coordinate(5, 5);
 		to=new Coordinate(4, 4);
+		chessboard[from.getRow()][from.getColumn()].setPiece(bishop);
 		// when
-		boolean isValid=bishop.isMoveValid(from, to, chessboard);
+		boolean isValid=bishop.canMoveBeMade(from, to, chessboard);
 		//then
 		assertTrue(isValid);
 	}
@@ -95,8 +100,9 @@ public class BishopTest {
 		// given
 		from=new Coordinate(5, 5);
 		to=new Coordinate(1, 1);
+		chessboard[from.getRow()][from.getColumn()].setPiece(bishop);
 		// when
-		boolean isValid=bishop.isMoveValid(from, to, chessboard);
+		boolean isValid=bishop.canMoveBeMade(from, to, chessboard);
 		//then
 		assertFalse(isValid);
 	}
@@ -106,8 +112,9 @@ public class BishopTest {
 		// given
 		from=new Coordinate(5, 5);
 		to=new Coordinate(4, 6);
+		chessboard[from.getRow()][from.getColumn()].setPiece(bishop);
 		// when
-		boolean isValid=bishop.isMoveValid(from, to, chessboard);
+		boolean isValid=bishop.canMoveBeMade(from, to, chessboard);
 		//then
 		assertTrue(isValid);
 	}
@@ -117,8 +124,9 @@ public class BishopTest {
 		// given
 		from=new Coordinate(5, 4);
 		to=new Coordinate(1, 8);
+		chessboard[from.getRow()][from.getColumn()].setPiece(bishop);
 		// when
-		boolean isValid=bishop.isMoveValid(from, to, chessboard);
+		boolean isValid=bishop.canMoveBeMade(from, to, chessboard);
 		//then
 		assertFalse(isValid);
 	}

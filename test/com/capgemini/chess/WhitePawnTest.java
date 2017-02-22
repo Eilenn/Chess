@@ -29,7 +29,7 @@ public class WhitePawnTest {
 		pawn.setFirstMove(false);
 		to=new Coordinate(from.getRow()+1, from.getColumn());
 		// when
-		boolean isAllowed=pawn.isMoveValid(from, to, chessboard);
+		boolean isAllowed=pawn.canMoveBeMade(from, to, chessboard);
 		// then
 		assertTrue(isAllowed);
 	}
@@ -39,7 +39,7 @@ public class WhitePawnTest {
 		pawn.setFirstMove(false);
 		to=new Coordinate(from.getRow()-1, from.getColumn());
 		// when
-		boolean isAllowed=pawn.isMoveValid(from, to, chessboard);
+		boolean isAllowed=pawn.canMoveBeMade(from, to, chessboard);
 		// then
 		assertFalse(isAllowed);
 	}
@@ -50,7 +50,7 @@ public class WhitePawnTest {
 		pawn.setFirstMove(true);
 		to=new Coordinate(from.getRow()+2, from.getColumn());
 		// when
-		boolean isAllowed=pawn.isMoveValid(from, to, chessboard);
+		boolean isAllowed=pawn.canMoveBeMade(from, to, chessboard);
 		// then
 		assertTrue(isAllowed);
 	}
@@ -61,7 +61,7 @@ public class WhitePawnTest {
 		pawn.setFirstMove(true);
 		to=new Coordinate(from.getRow()+1, from.getColumn());
 		// when
-		boolean isAllowed=pawn.isMoveValid(from, to, chessboard);
+		boolean isAllowed=pawn.canMoveBeMade(from, to, chessboard);
 		// then
 		assertTrue(isAllowed);
 	}
@@ -72,7 +72,7 @@ public class WhitePawnTest {
 		pawn.setFirstMove(true);
 		to=new Coordinate(from.getRow()-1, from.getColumn());
 		// when
-		boolean isAllowed=pawn.isMoveValid(from, to, chessboard);
+		boolean isAllowed=pawn.canMoveBeMade(from, to, chessboard);
 		// then
 		assertFalse(isAllowed);
 	}
@@ -83,7 +83,7 @@ public class WhitePawnTest {
 		to=new Coordinate(from.getRow()+1, from.getColumn()-1);
 		chessboard[to.getRow()][to.getColumn()].setPiece(new Pawn(black));
 		// when
-		boolean isValidCapture=pawn.isMoveValid(from, to, chessboard);
+		boolean isValidCapture=pawn.canMoveBeMade(from, to, chessboard);
 		// then
 		assertTrue(isValidCapture);
 	}
@@ -94,7 +94,7 @@ public class WhitePawnTest {
 		to=new Coordinate(from.getRow()+1, from.getColumn()-1);
 		chessboard[to.getRow()][to.getColumn()].setPiece(new Pawn(white));
 		// when
-		boolean isValidCapture=pawn.isMoveValid(from, to, chessboard);
+		boolean isValidCapture=pawn.canMoveBeMade(from, to, chessboard);
 		// then
 		assertFalse(isValidCapture);
 	}
@@ -105,7 +105,7 @@ public class WhitePawnTest {
 		to=new Coordinate(from.getRow()+2, from.getColumn()+2);
 		chessboard[to.getRow()][to.getColumn()].setPiece(new Pawn(black));
 		// when
-		boolean isValidCapture=pawn.isMoveValid(from, to, chessboard);
+		boolean isValidCapture=pawn.canMoveBeMade(from, to, chessboard);
 		// then
 		assertFalse(isValidCapture);
 	}
@@ -116,7 +116,7 @@ public class WhitePawnTest {
 		pawn.setFirstMove(false);
 		to=new Coordinate(from.getRow()+1, from.getColumn()-1);
 		// when
-		boolean isAllowed=pawn.isMoveValid(from, to, chessboard);
+		boolean isAllowed=pawn.canMoveBeMade(from, to, chessboard);
 		// then
 		assertFalse(isAllowed);
 	}
@@ -128,7 +128,7 @@ public class WhitePawnTest {
 		to=new Coordinate(from.getRow()+1, from.getColumn()-1);
 		chessboard[to.getRow()][to.getColumn()].setPiece(new Pawn(black));
 		// when
-		boolean isAllowed=pawn.isMoveValid(from, to, chessboard);
+		boolean isAllowed=pawn.canMoveBeMade(from, to, chessboard);
 		// then
 		assertTrue(isAllowed);
 	}
@@ -139,7 +139,7 @@ public class WhitePawnTest {
 		pawn.setFirstMove(false);
 		to=new Coordinate(from.getRow()+2, from.getColumn()-2);
 		// when
-		boolean isAllowed=pawn.isMoveValid(from, to, chessboard);
+		boolean isAllowed=pawn.canMoveBeMade(from, to, chessboard);
 		// then
 		assertFalse(isAllowed);
 	}
@@ -151,7 +151,7 @@ public class WhitePawnTest {
 		to=new Coordinate(from.getRow()+2, from.getColumn()-2);
 		chessboard[to.getRow()][to.getColumn()].setPiece(new Pawn(black));
 		// when
-		boolean isAllowed=pawn.isMoveValid(from, to, chessboard);
+		boolean isAllowed=pawn.canMoveBeMade(from, to, chessboard);
 		// then
 		assertFalse(isAllowed);
 	}
@@ -162,7 +162,7 @@ public class WhitePawnTest {
 		pawn.setFirstMove(false);
 		to=new Coordinate(from.getRow()+1, from.getColumn()+1);
 		// when
-		boolean isAllowed=pawn.isMoveValid(from, to, chessboard);
+		boolean isAllowed=pawn.canMoveBeMade(from, to, chessboard);
 		// then
 		assertFalse(isAllowed);
 	}
@@ -173,7 +173,7 @@ public class WhitePawnTest {
 		pawn.setFirstMove(true);
 		to=new Coordinate(from.getRow()+1, from.getColumn()-1);
 		// when
-		boolean isAllowed=pawn.isMoveValid(from, to, chessboard);
+		boolean isAllowed=pawn.canMoveBeMade(from, to, chessboard);
 		// then
 		assertFalse(isAllowed);
 	}
@@ -185,7 +185,7 @@ public class WhitePawnTest {
 		to=new Coordinate(from.getRow()+1, from.getColumn()+1);
 		chessboard[to.getRow()][to.getColumn()].setPiece(new Pawn(black));
 		// when
-		boolean isAllowed=pawn.isMoveValid(from, to, chessboard);
+		boolean isAllowed=pawn.canMoveBeMade(from, to, chessboard);
 		// then
 		assertTrue(isAllowed);
 	}
@@ -196,7 +196,7 @@ public class WhitePawnTest {
 		pawn.setFirstMove(true);
 		to=new Coordinate(from.getRow()+1, from.getColumn()+1);
 		// when
-		boolean isAllowed=pawn.isMoveValid(from, to, chessboard);
+		boolean isAllowed=pawn.canMoveBeMade(from, to, chessboard);
 		// then
 		assertFalse(isAllowed);
 	}

@@ -22,9 +22,12 @@ public abstract class Piece {
 	public void setColor(ColorChess color) {
 		this.color = color;
 	}
-
+	public boolean canMoveBeMade(Coordinate from, Coordinate to, Square[][] chessboard){
+		return isMoveValid(from, to, chessboard)&&(!wouldMoveCauseCheck(from, to, chessboard));
+	}
 	public boolean wouldMoveCauseCheck(Coordinate from, Coordinate to, Square[][] chessboard) {
 		// move piece to target, set empty at origin
+		//System.out.println(to.getColumn());
 		Piece pieceBeingMoved = chessboard[from.getRow()][from.getColumn()].getPiece();
 		ColorChess pieceBeingMovedColor = pieceBeingMoved.getColor();
 		ColorChess opponentColor = returnOpponentColor(pieceBeingMovedColor);

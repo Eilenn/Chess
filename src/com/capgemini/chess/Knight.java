@@ -11,6 +11,7 @@ public class Knight extends Piece {
 
 	@Override
 	public boolean isMoveValid(Coordinate from, Coordinate to, Square[][] chessboard) {
+
 		if (isPieceAtDestinationTheSameColorAsPieceMoved(from, to, chessboard)) {
 			return false;
 		} else {
@@ -24,6 +25,7 @@ public class Knight extends Piece {
 			}
 			return false;
 		}
+
 	}
 
 }

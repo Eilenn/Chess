@@ -27,8 +27,9 @@ public class RookTest {
 		// given
 		from = new Coordinate(3, 4);
 		to = new Coordinate(5, 4);
+		chessboard[from.getRow()][from.getColumn()].setPiece(rook);
 		// when
-		boolean isInTheSameColumn = rook.isMoveValid(from, to, chessboard);
+		boolean isInTheSameColumn = rook.canMoveBeMade(from, to, chessboard);
 		// then
 		assertTrue(isInTheSameColumn);
 	}
@@ -38,8 +39,9 @@ public class RookTest {
 		// given
 		from = new Coordinate(4, 2);
 		to = new Coordinate(4, 4);
+		chessboard[from.getRow()][from.getColumn()].setPiece(rook);
 		// when
-		boolean isInTheSameRow = rook.isMoveValid(from, to, chessboard);
+		boolean isInTheSameRow = rook.canMoveBeMade(from, to, chessboard);
 		// then
 		assertTrue(isInTheSameRow);
 	}
@@ -51,7 +53,7 @@ public class RookTest {
 		to = new Coordinate(4, 1);
 		Piece piece = chessboard[from.getRow()][from.getColumn()].getPiece();
 		// when
-		boolean isValid = piece.isMoveValid(from, to, chessboard);
+		boolean isValid = piece.canMoveBeMade(from, to, chessboard);
 		// then
 		assertFalse(isValid);
 	}
@@ -65,7 +67,7 @@ public class RookTest {
 		chessboard[2][from.getColumn()].setPiece(new EmptyPiece());
 		;
 		// when
-		boolean isValid = piece.isMoveValid(from, to, chessboard);
+		boolean isValid = piece.canMoveBeMade(from, to, chessboard);
 		// then
 		assertTrue(isValid);
 	}
@@ -77,7 +79,7 @@ public class RookTest {
 		to = new Coordinate(4, 4);
 		Piece piece = chessboard[from.getRow()][from.getColumn()].getPiece();
 		// when
-		boolean isValid = piece.isMoveValid(from, to, chessboard);
+		boolean isValid = piece.canMoveBeMade(from, to, chessboard);
 		// then
 		assertFalse(isValid);
 	}
@@ -93,7 +95,7 @@ public class RookTest {
 																					// from
 																					// pawn
 		// when
-		boolean isValid = piece.isMoveValid(from, to, chessboard);
+		boolean isValid = piece.canMoveBeMade(from, to, chessboard);
 		// then
 		assertFalse(isValid);
 	}
@@ -106,7 +108,7 @@ public class RookTest {
 		chessboard[1][1].setPiece(new Rook(white));
 		chessboard[2][1].setPiece(new Rook(white));
 		// when
-		boolean isValid = rook.isMoveValid(from, to, chessboard);
+		boolean isValid = rook.canMoveBeMade(from, to, chessboard);
 		// then
 		assertFalse(isValid);
 	}
@@ -119,7 +121,7 @@ public class RookTest {
 		chessboard[1][1].setPiece(new Rook(white));
 		chessboard[2][1].setPiece(new Rook(black));
 		// when
-		boolean isValid = rook.isMoveValid(from, to, chessboard);
+		boolean isValid = rook.canMoveBeMade(from, to, chessboard);
 		// then
 		assertTrue(isValid);
 	}

@@ -31,7 +31,7 @@ public class QueenTest {
 		// given
 		to = new Coordinate(fromRow - 1, fromCol);
 		// when
-		boolean isValid = queen.isMoveValid(from, to, chessboard);
+		boolean isValid = queen.canMoveBeMade(from, to, chessboard);
 		// then
 		assertTrue(isValid);
 	}
@@ -43,7 +43,7 @@ public class QueenTest {
 		chessboard[to.getRow()][to.getColumn()].setPiece(new EmptyPiece()); // freed
 																			// destination
 		// when
-		boolean isValid = queen.isMoveValid(from, to, chessboard);
+		boolean isValid = queen.canMoveBeMade(from, to, chessboard);
 		// then
 		assertTrue(isValid);
 	}
@@ -53,7 +53,7 @@ public class QueenTest {
 		// given
 		to = new Coordinate(fromRow - 2, fromCol);
 		// when
-		boolean isValid = queen.isMoveValid(from, to, chessboard);
+		boolean isValid = queen.canMoveBeMade(from, to, chessboard);
 		// then
 		assertFalse(isValid);
 	}
@@ -63,7 +63,7 @@ public class QueenTest {
 		// given
 		to = new Coordinate(fromRow + 1, fromCol);
 		// when
-		boolean isValid = queen.isMoveValid(from, to, chessboard);
+		boolean isValid = queen.canMoveBeMade(from, to, chessboard);
 		// then
 		assertTrue(isValid);
 	}
@@ -73,7 +73,7 @@ public class QueenTest {
 		// given
 		to = new Coordinate(fromRow + 2, fromCol);
 		// when
-		boolean isValid = queen.isMoveValid(from, to, chessboard);
+		boolean isValid = queen.canMoveBeMade(from, to, chessboard);
 		// then
 		assertTrue(isValid);
 	}
@@ -83,7 +83,7 @@ public class QueenTest {
 		// given
 		to = new Coordinate(fromRow + 3, fromCol);
 		// when
-		boolean isValid = queen.isMoveValid(from, to, chessboard);
+		boolean isValid = queen.canMoveBeMade(from, to, chessboard);
 		// then
 		assertTrue(isValid);
 	}
@@ -94,7 +94,7 @@ public class QueenTest {
 		to = new Coordinate(fromRow + 3, fromCol);
 		chessboard[to.getRow()][to.getColumn()].setPiece(new Pawn(white));
 		// when
-		boolean isValid = queen.isMoveValid(from, to, chessboard);
+		boolean isValid = queen.canMoveBeMade(from, to, chessboard);
 		// then
 		assertFalse(isValid);
 	}
@@ -104,7 +104,7 @@ public class QueenTest {
 		// given
 		to = new Coordinate(fromRow, fromCol - 3);
 		// when
-		boolean isValid = queen.isMoveValid(from, to, chessboard);
+		boolean isValid = queen.canMoveBeMade(from, to, chessboard);
 		// then
 		assertTrue(isValid);
 	}
@@ -114,7 +114,7 @@ public class QueenTest {
 		// given
 		to = new Coordinate(fromRow, fromCol + 3);
 		// when
-		boolean isValid = queen.isMoveValid(from, to, chessboard);
+		boolean isValid = queen.canMoveBeMade(from, to, chessboard);
 		// then
 		assertTrue(isValid);
 	}
@@ -125,7 +125,7 @@ public class QueenTest {
 		to = new Coordinate(fromRow, fromCol - 3);
 		chessboard[to.getRow()][to.getColumn()].setPiece(new Pawn(white));
 		// when
-		boolean isValid = queen.isMoveValid(from, to, chessboard);
+		boolean isValid = queen.canMoveBeMade(from, to, chessboard);
 		// then
 		assertFalse(isValid);
 	}
@@ -136,7 +136,7 @@ public class QueenTest {
 		to = new Coordinate(fromRow, fromCol + 3);
 		chessboard[to.getRow()][to.getColumn()].setPiece(new Pawn(white));
 		// when
-		boolean isValid = queen.isMoveValid(from, to, chessboard);
+		boolean isValid = queen.canMoveBeMade(from, to, chessboard);
 		// then
 		assertFalse(isValid);
 	}
@@ -147,7 +147,7 @@ public class QueenTest {
 		to = new Coordinate(fromRow, fromCol - 3);
 		chessboard[to.getRow()][to.getColumn()].setPiece(new Pawn(black));
 		// when
-		boolean isValid = queen.isMoveValid(from, to, chessboard);
+		boolean isValid = queen.canMoveBeMade(from, to, chessboard);
 		// then
 		assertTrue(isValid);
 	}
@@ -158,7 +158,7 @@ public class QueenTest {
 		to = new Coordinate(fromRow, fromCol + 3);
 		chessboard[to.getRow()][to.getColumn()].setPiece(new Pawn(black));
 		// when
-		boolean isValid = queen.isMoveValid(from, to, chessboard);
+		boolean isValid = queen.canMoveBeMade(from, to, chessboard);
 		// then
 		assertTrue(isValid);
 	}
@@ -168,7 +168,7 @@ public class QueenTest {
 		// given
 		to = new Coordinate(fromRow + 2, fromCol - 2);
 		// when
-		boolean isValid = queen.isMoveValid(from, to, chessboard);
+		boolean isValid = queen.canMoveBeMade(from, to, chessboard);
 		// then
 		assertTrue(isValid);
 	}
@@ -178,7 +178,7 @@ public class QueenTest {
 		// given
 		to = new Coordinate(fromRow + 2, fromCol + 2);
 		// when
-		boolean isValid = queen.isMoveValid(from, to, chessboard);
+		boolean isValid = queen.canMoveBeMade(from, to, chessboard);
 		// then
 		assertTrue(isValid);
 	}
@@ -188,7 +188,7 @@ public class QueenTest {
 		// given
 		to = new Coordinate(fromRow -1, fromCol - 1);
 		// when
-		boolean isValid = queen.isMoveValid(from, to, chessboard);
+		boolean isValid = queen.canMoveBeMade(from, to, chessboard);
 		// then
 		assertTrue(isValid);
 	}
@@ -198,7 +198,7 @@ public class QueenTest {
 		// given
 		to = new Coordinate(fromRow -1, fromCol + 1);
 		// when
-		boolean isValid = queen.isMoveValid(from, to, chessboard);
+		boolean isValid = queen.canMoveBeMade(from, to, chessboard);
 		// then
 		assertTrue(isValid);
 	}
@@ -208,7 +208,7 @@ public class QueenTest {
 		// given
 		to = new Coordinate(fromRow -2, fromCol + 2);
 		// when
-		boolean isValid = queen.isMoveValid(from, to, chessboard);
+		boolean isValid = queen.canMoveBeMade(from, to, chessboard);
 		// then
 		assertFalse(isValid);
 	}
@@ -218,7 +218,7 @@ public class QueenTest {
 		// given
 		to = new Coordinate(fromRow + 3, fromCol + 3);
 		// when
-		boolean isValid = queen.isMoveValid(from, to, chessboard);
+		boolean isValid = queen.canMoveBeMade(from, to, chessboard);
 		// then
 		assertTrue(isValid);
 	}
@@ -229,7 +229,7 @@ public class QueenTest {
 		to = new Coordinate(fromRow + 3, fromCol + 3);
 		chessboard[to.getRow()][to.getColumn()].setPiece(new Pawn(white));
 		// when
-		boolean isValid = queen.isMoveValid(from, to, chessboard);
+		boolean isValid = queen.canMoveBeMade(from, to, chessboard);
 		// then
 		assertFalse(isValid);
 	}

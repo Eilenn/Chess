@@ -27,7 +27,7 @@ public class KingTest {
 		// given
 		to=new Coordinate(from.getRow()-1, from.getColumn());
 		// when
-		boolean isValid=king.isMoveValid(from, to, chessboard);
+		boolean isValid=king.canMoveBeMade(from, to, chessboard);
 		// then
 		assertTrue(isValid);
 	}
@@ -37,7 +37,7 @@ public class KingTest {
 		// given
 		to=new Coordinate(from.getRow()-2, from.getColumn());
 		// when
-		boolean isValid=king.isMoveValid(from, to, chessboard);
+		boolean isValid=king.canMoveBeMade(from, to, chessboard);
 		// then
 		assertFalse(isValid);
 	}
@@ -47,7 +47,7 @@ public class KingTest {
 		// given
 		to=new Coordinate(from.getRow()-1, from.getColumn()-1);
 		// when
-		boolean isValid=king.isMoveValid(from, to, chessboard);
+		boolean isValid=king.canMoveBeMade(from, to, chessboard);
 		// then
 		assertTrue(isValid);
 	}
@@ -57,7 +57,7 @@ public class KingTest {
 		// given
 		to=new Coordinate(from.getRow()-1, from.getColumn()+1);
 		// when
-		boolean isValid=king.isMoveValid(from, to, chessboard);
+		boolean isValid=king.canMoveBeMade(from, to, chessboard);
 		// then
 		assertTrue(isValid);
 	}
@@ -70,7 +70,7 @@ public class KingTest {
 		chessboard[from.getRow()][from.getColumn()].setPiece(king);
 		to=new Coordinate(from.getRow()+1, from.getColumn());
 		// when
-		boolean isValid=king.isMoveValid(from, to, chessboard);
+		boolean isValid=king.canMoveBeMade(from, to, chessboard);
 		// then
 		assertTrue(isValid);
 	}
@@ -80,7 +80,7 @@ public class KingTest {
 		// given
 		to=new Coordinate(from.getRow()+1, from.getColumn());
 		// when
-		boolean isValid=king.isMoveValid(from, to, chessboard);
+		boolean isValid=king.canMoveBeMade(from, to, chessboard);
 		// then
 		assertFalse(isValid);
 	}
@@ -93,7 +93,7 @@ public class KingTest {
 		chessboard[from.getRow()][from.getColumn()].setPiece(king);
 		to=new Coordinate(from.getRow()+1, from.getColumn()-1);
 		// when
-		boolean isValid=king.isMoveValid(from, to, chessboard);
+		boolean isValid=king.canMoveBeMade(from, to, chessboard);
 		// then
 		assertTrue(isValid);
 	}
@@ -106,7 +106,7 @@ public class KingTest {
 		chessboard[from.getRow()][from.getColumn()].setPiece(king);
 		to=new Coordinate(from.getRow()+1, from.getColumn()+1);
 		// when
-		boolean isValid=king.isMoveValid(from, to, chessboard);
+		boolean isValid=king.canMoveBeMade(from, to, chessboard);
 		// then
 		assertTrue(isValid);
 	}
@@ -118,7 +118,7 @@ public class KingTest {
 		chessboard[from.getRow()][from.getColumn()].setPiece(king);
 		to=new Coordinate(from.getRow(), from.getColumn()-1);
 		// when
-		boolean isValid=king.isMoveValid(from, to, chessboard);
+		boolean isValid=king.canMoveBeMade(from, to, chessboard);
 		// then
 		assertTrue(isValid);
 	}
@@ -128,7 +128,7 @@ public class KingTest {
 		// given
 		to=new Coordinate(from.getRow(), from.getColumn()-2);
 		// when
-		boolean isValid=king.isMoveValid(from, to, chessboard);
+		boolean isValid=king.canMoveBeMade(from, to, chessboard);
 		// then
 		assertFalse(isValid);
 	}
@@ -141,7 +141,7 @@ public class KingTest {
 		chessboard[from.getRow()][from.getColumn()].setPiece(king);
 		to=new Coordinate(from.getRow(), from.getColumn()+1);
 		// when
-		boolean isValid=king.isMoveValid(from, to, chessboard);
+		boolean isValid=king.canMoveBeMade(from, to, chessboard);
 		// then
 		assertTrue(isValid);
 	}
@@ -151,7 +151,7 @@ public class KingTest {
 		// given
 		to=new Coordinate(3, 8);
 		// when
-		boolean isValid=king.isMoveValid(from, to, chessboard);
+		boolean isValid=king.canMoveBeMade(from, to, chessboard);
 		// then
 		assertFalse(isValid);
 	}
@@ -165,7 +165,7 @@ public class KingTest {
 		to=new Coordinate(from.getRow()+1, from.getColumn());
 		chessboard[5][5].setPiece(new EmptyPiece());
 		// when
-		boolean isValid=king.isMoveValid(from, to, chessboard);
+		boolean isValid=king.canMoveBeMade(from, to, chessboard);
 		// then
 		assertFalse(isValid);
 	}
@@ -177,7 +177,7 @@ public class KingTest {
 		to=new Coordinate(from.getRow(), from.getColumn()-1);
 		chessboard[5][5].setPiece(new EmptyPiece());
 		// when
-		boolean isValid=king.isMoveValid(from, to, chessboard);
+		boolean isValid=king.canMoveBeMade(from, to, chessboard);
 		// then
 		assertFalse(isValid);
 	}
@@ -189,7 +189,7 @@ public class KingTest {
 		to=new Coordinate(from.getRow(), from.getColumn()+1);
 		chessboard[5][5].setPiece(new EmptyPiece());
 		// when
-		boolean isValid=king.isMoveValid(from, to, chessboard);
+		boolean isValid=king.canMoveBeMade(from, to, chessboard);
 		// then
 		assertFalse(isValid);
 	}
@@ -201,7 +201,7 @@ public class KingTest {
 		to=new Coordinate(from.getRow()+1, from.getColumn()+1);
 		chessboard[5][5].setPiece(new EmptyPiece());
 		// when
-		boolean isValid=king.isMoveValid(from, to, chessboard);
+		boolean isValid=king.canMoveBeMade(from, to, chessboard);
 		// then
 		assertFalse(isValid);
 	}
@@ -213,7 +213,7 @@ public class KingTest {
 		to=new Coordinate(from.getRow()+1, from.getColumn()-1);
 		chessboard[5][5].setPiece(new EmptyPiece());
 		// when
-		boolean isValid=king.isMoveValid(from, to, chessboard);
+		boolean isValid=king.canMoveBeMade(from, to, chessboard);
 		// then
 		assertFalse(isValid);
 	}
