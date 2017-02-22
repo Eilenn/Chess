@@ -65,6 +65,9 @@ public class KingTest {
 	@Test
 	public void shouldReturnTrueFor1Down() {
 		// given
+		chessboard[from.getRow()][from.getColumn()].setPiece(new EmptyPiece());
+		from=new Coordinate(3, 3);
+		chessboard[from.getRow()][from.getColumn()].setPiece(king);
 		to=new Coordinate(from.getRow()+1, from.getColumn());
 		// when
 		boolean isValid=king.isMoveValid(from, to, chessboard);
@@ -73,8 +76,21 @@ public class KingTest {
 	}
 	
 	@Test
+	public void shouldReturnFalseFor1DownBecauseCheckByBlackPawn() {
+		// given
+		to=new Coordinate(from.getRow()+1, from.getColumn());
+		// when
+		boolean isValid=king.isMoveValid(from, to, chessboard);
+		// then
+		assertFalse(isValid);
+	}
+	
+	@Test
 	public void shouldReturnTrueFor1Down1Left() {
 		// given
+		chessboard[from.getRow()][from.getColumn()].setPiece(new EmptyPiece());
+		from=new Coordinate(3, 3);
+		chessboard[from.getRow()][from.getColumn()].setPiece(king);
 		to=new Coordinate(from.getRow()+1, from.getColumn()-1);
 		// when
 		boolean isValid=king.isMoveValid(from, to, chessboard);
@@ -85,6 +101,9 @@ public class KingTest {
 	@Test
 	public void shouldReturnTrueFor1Down1Right() {
 		// given
+		chessboard[from.getRow()][from.getColumn()].setPiece(new EmptyPiece());
+		from=new Coordinate(3, 3);
+		chessboard[from.getRow()][from.getColumn()].setPiece(king);
 		to=new Coordinate(from.getRow()+1, from.getColumn()+1);
 		// when
 		boolean isValid=king.isMoveValid(from, to, chessboard);
@@ -94,6 +113,9 @@ public class KingTest {
 	@Test
 	public void shouldReturnTrueFor1Left() {
 		// given
+		chessboard[from.getRow()][from.getColumn()].setPiece(new EmptyPiece());
+		from=new Coordinate(3, 3);
+		chessboard[from.getRow()][from.getColumn()].setPiece(king);
 		to=new Coordinate(from.getRow(), from.getColumn()-1);
 		// when
 		boolean isValid=king.isMoveValid(from, to, chessboard);
@@ -114,6 +136,9 @@ public class KingTest {
 	@Test
 	public void shouldReturnTrueFor1Right() {
 		// given
+		chessboard[from.getRow()][from.getColumn()].setPiece(new EmptyPiece());
+		from=new Coordinate(3, 3);
+		chessboard[from.getRow()][from.getColumn()].setPiece(king);
 		to=new Coordinate(from.getRow(), from.getColumn()+1);
 		// when
 		boolean isValid=king.isMoveValid(from, to, chessboard);

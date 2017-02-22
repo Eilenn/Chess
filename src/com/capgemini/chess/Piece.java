@@ -23,21 +23,6 @@ public abstract class Piece {
 		this.color = color;
 	}
 
-	public boolean isPieceAtDestinationTheSameColorAsPieceMoved(Coordinate from, Coordinate to, Square[][] chessboard) {
-		Square origin = chessboard[from.getRow()][from.getColumn()];
-		Piece pieceMoved = origin.getPiece();
-		ColorChess movedPieceColor = pieceMoved.getColor();
-		Square destination = chessboard[to.getRow()][to.getColumn()];
-		Piece pieceAtDestination = destination.getPiece();
-		ColorChess destinationPieceColor = pieceAtDestination.getColor();
-		if (destination.isEmpty()) {
-			return false;
-		} else if (destinationPieceColor != movedPieceColor) {
-			return false;
-		} else
-			return true;
-	}
-
 	public boolean wouldMoveCauseCheck(Coordinate from, Coordinate to, Square[][] chessboard) {
 		// move piece to target, set empty at origin
 		Piece pieceBeingMoved = chessboard[from.getRow()][from.getColumn()].getPiece();
@@ -58,8 +43,7 @@ public abstract class Piece {
 				ColorChess pieceColor = piece.getColor();
 				if (!sq.isEmpty() && (pieceColor == opponentColor)) {
 					if (piece.isMoveValid(fromOpponent, kingsPosition, chessboard)) {
-						// return piece to original position because move is
-						// impossible as it causes self check
+						// return piece to original position
 						chessboard[from.getRow()][from.getColumn()].setPiece(pieceBeingMoved);
 						chessboard[to.getRow()][to.getColumn()].setPiece(pieceAtDestination);
 						return true;
@@ -70,6 +54,21 @@ public abstract class Piece {
 		chessboard[from.getRow()][from.getColumn()].setPiece(pieceBeingMoved);
 		chessboard[to.getRow()][to.getColumn()].setPiece(pieceAtDestination);
 		return false;
+	}
+
+	public boolean isPieceAtDestinationTheSameColorAsPieceMoved(Coordinate from, Coordinate to, Square[][] chessboard) {
+		Square origin = chessboard[from.getRow()][from.getColumn()];
+		Piece pieceMoved = origin.getPiece();
+		ColorChess movedPieceColor = pieceMoved.getColor();
+		Square destination = chessboard[to.getRow()][to.getColumn()];
+		Piece pieceAtDestination = destination.getPiece();
+		ColorChess destinationPieceColor = pieceAtDestination.getColor();
+		if (destination.isEmpty()) {
+			return false;
+		} else if (destinationPieceColor != movedPieceColor) {
+			return false;
+		} else
+			return true;
 	}
 
 	private ColorChess returnOpponentColor(ColorChess pieceColor) {

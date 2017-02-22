@@ -12,18 +12,22 @@ public class King extends Piece {
 
 	@Override
 	public boolean isMoveValid(Coordinate from, Coordinate to, Square[][] chessboard) {
-		if (isPieceAtDestinationTheSameColorAsPieceMoved(from, to, chessboard)) {
+		if (wouldMoveCauseCheck(from, to, chessboard)) {
 			return false;
 		} else {
-			int distanceRow = to.getRow() - from.getRow();
-			int distanceColumn = to.getColumn() - from.getColumn();
-			Coordinate distance = new Coordinate(distanceRow, distanceColumn);
-			for (Coordinate diff : allowedMoves) {
-				if (distance.equals(diff)) {
-					return true;
+			if (isPieceAtDestinationTheSameColorAsPieceMoved(from, to, chessboard)) {
+				return false;
+			} else {
+				int distanceRow = to.getRow() - from.getRow();
+				int distanceColumn = to.getColumn() - from.getColumn();
+				Coordinate distance = new Coordinate(distanceRow, distanceColumn);
+				for (Coordinate diff : allowedMoves) {
+					if (distance.equals(diff)) {
+						return true;
+					}
 				}
+				return false;
 			}
-			return false;
 		}
 	}
 
