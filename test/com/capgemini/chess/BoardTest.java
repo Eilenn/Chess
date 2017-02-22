@@ -26,17 +26,4 @@ public class BoardTest {
 		assertEquals(81, size);
 	}
 
-	@Ignore // visual check if pieces were put correctly
-	@Test
-	public void shouldPutPiecesCorrectly() {
-		board.initializeBoard();
-		Square[][] chessboard = board.getChessboard();
-		for (int i = 1; i < chessboard.length; i++) {
-			for (int j = 1; j < chessboard[0].length; j++) {
-				System.out.println(chessboard[i][j].getPiece().toString());
-			}
-		}
-
-	}
-
 }

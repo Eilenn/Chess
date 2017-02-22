@@ -1,5 +1,14 @@
 package com.capgemini.chess;
 
+/**
+ * Rook class represents Rook chess piece. Every created Rook must be white or
+ * black. Rook validates its moves - rook can only move horizontally or
+ * vertically. Rook cannot jump over other pieces. Rook captures the same way it
+ * moves. Rook class doesn't implement castling move.
+ * 
+ * @author BOWROBEL
+ *
+ */
 public class Rook extends Piece {
 
 	public Rook(ColorChess color) {
@@ -8,18 +17,10 @@ public class Rook extends Piece {
 
 	@Override
 	public boolean isMoveValid(Coordinate from, Coordinate to, Square[][] chessboard) {
-		// check if move causes capturing of the same team, if so - it is not
-		// valid
 		if (isPieceAtDestinationTheSameColorAsPieceMoved(from, to, chessboard)) {
 			return false;
-		}
-		// if it doesn't
-		else {
-			// check if the move is horizontal or vertical - if it's not, return
-			// false
+		} else {
 			if (isMoveAllowedForRook(from, to)) {
-				// check if the move doesn't cause leaping over a piece, if it
-				// does - return false
 				if (isPathToDestinationOccupied(from, to, chessboard)) {
 					return false;
 				} else
@@ -30,23 +31,57 @@ public class Rook extends Piece {
 		}
 	}
 
-	// is this move allowed for rook
+	/**
+	 * Checks if move is in accordance to rook moving rules. For horizontal or
+	 * vertical moves returns true, for other types of moves - false.
+	 * 
+	 * @param from
+	 * @param to
+	 * @return
+	 */
+
 	private boolean isMoveAllowedForRook(Coordinate from, Coordinate to) {
 		return isDestinationInTheSameRow(from, to) || isDestinationInTheSameColumn(from, to);
 	}
 
+	/**
+	 * Checks if destination is in the same row. Returns true for the same row
+	 * and false for destination in other row then origin.
+	 * 
+	 * @param from
+	 * @param to
+	 * @return
+	 */
 	private boolean isDestinationInTheSameRow(Coordinate from, Coordinate to) {
 		int fromX = from.getRow();
 		int toX = to.getRow();
 		return toX == fromX;
 	}
 
+	/**
+	 * Checks if destination is in the same column. Returns true for the same
+	 * column and false for destination in other column then origin.
+	 * 
+	 * @param from
+	 * @param to
+	 * @return
+	 */
 	private boolean isDestinationInTheSameColumn(Coordinate from, Coordinate to) {
 		int fromY = from.getColumn();
 		int toY = to.getColumn();
 		return toY == fromY;
 	}
 
+	/**
+	 * Checks if there is any piece on horizontal or vertical path from the
+	 * point of origin to destination. Returns true for blocked path, false for
+	 * free path.
+	 * 
+	 * @param from
+	 * @param to
+	 * @param chessboard
+	 * @return
+	 */
 	private boolean isPathToDestinationOccupied(Coordinate from, Coordinate to, Square[][] chessboard) {
 		Piece emptyPiece = new EmptyPiece();
 		int rowStart = from.getRow();

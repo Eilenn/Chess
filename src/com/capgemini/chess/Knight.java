@@ -1,5 +1,15 @@
 package com.capgemini.chess;
 
+/**
+ * Knight class represents Knight chess piece. Every created Knight must be
+ * white or black. Knight validates its moves - knight can only move in L shape
+ * (one field horizontally and two vertically or one field vertically and one
+ * horizontally. Knight can jump over pieces. Knight captures the same way it
+ * moves.
+ * 
+ * @author BOWROBEL
+ *
+ */
 public class Knight extends Piece {
 	private Coordinate[] allowedMoves = { new Coordinate(2, 1), new Coordinate(-2, 1), new Coordinate(-2, -1),
 			new Coordinate(2, -1), new Coordinate(1, 2), new Coordinate(1, -2), new Coordinate(-1, 2),

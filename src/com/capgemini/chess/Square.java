@@ -23,6 +23,13 @@ public class Square {
 		this.piece = piece;
 	}
 
+	/**
+	 * Checks if the field contains an instance of EmptyPiece class. Returns
+	 * true for empty field and false for field containing piece from another
+	 * class extending Piece.
+	 * 
+	 * @return
+	 */
 	public boolean isEmpty() {
 		return this.getPiece().equals(new EmptyPiece());
 	}

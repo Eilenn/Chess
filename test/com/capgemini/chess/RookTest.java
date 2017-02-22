@@ -90,10 +90,8 @@ public class RookTest {
 		from = new Coordinate(1, 1); // index of first rook
 		to = new Coordinate(4, 4);
 		Piece piece = chessboard[from.getRow()][from.getColumn()].getPiece();
-		chessboard[from.getRow() + 1][from.getColumn()].setPiece(new EmptyPiece()); // freeing
-																					// path
-																					// from
-																					// pawn
+		// freeing path from pawn
+		chessboard[from.getRow() + 1][from.getColumn()].setPiece(new EmptyPiece());
 		// when
 		boolean isValid = piece.canMoveBeMade(from, to, chessboard);
 		// then

@@ -1,13 +1,5 @@
 package com.capgemini.chess;
 
-//TODO javadocs for every class
-
-//TODO fix chessboard - delete or move methods from board
-//TODO check indentation for every class
-//TODO delete stubs
-// TODO order methods by importance for every class
-// TODO final for Colors?
-
 import java.util.ArrayList;
 
 /**
@@ -25,7 +17,7 @@ public class Board {
 	private ArrayList<Piece> blackPiecesInGame;
 
 	/**
-	 * creates empty board with 81 squares, used only 64 named from 11 to 88
+	 * Creates empty board with 81 squares, used only 64 named from 11 to 88
 	 * with interchangeable colors, 81 to simplify specifying moves
 	 */
 	public Board() {
@@ -45,8 +37,12 @@ public class Board {
 		}
 	}
 
+	public Square[][] getChessboard() {
+		return chessboard;
+	}
+
 	/**
-	 * puts all types of pieces in their correct starting position.
+	 * Puts all types of pieces in their correct starting position.
 	 */
 	public void initializeBoard() {
 		createWhitePieces();
@@ -65,9 +61,10 @@ public class Board {
 		}
 	}
 
-	public Square[][] getChessboard() {
-		return chessboard;
-	}
+	/**
+	 * Creates list of white pieces in the beginning - 16 of them: 2 rooks, 2
+	 * knights, 2 bishops, King, Queen and 8 pawns.
+	 */
 
 	private void createWhitePieces() {
 		whitePiecesInGame = new ArrayList<>();
@@ -84,6 +81,10 @@ public class Board {
 		}
 	}
 
+	/**
+	 * Creates list of black pieces in the beginning - 16 of them: 2 rooks, 2
+	 * knights, 2 bishops, King, Queen and 8 pawns.
+	 */
 	private void createBlackPieces() {
 		blackPiecesInGame = new ArrayList<>();
 		blackPiecesInGame.add(new Rook(black));
@@ -101,7 +102,7 @@ public class Board {
 	}
 
 	/**
-	 * helps in assigning correct colors on the board, changes value from true
+	 * Helps in assigning correct colors on the board, changes value from true
 	 * for black to false for white
 	 * 
 	 * @param isSquareBlack

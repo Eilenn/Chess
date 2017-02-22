@@ -83,7 +83,7 @@ public class PieceMovingCheckTest {
 		// then
 		assertFalse(wouldCauseCheck);
 	}
-	
+
 	@Test
 	public void shouldReturnTrueForMovingWhiteBishopIntoCheck() {
 		// given
@@ -99,7 +99,7 @@ public class PieceMovingCheckTest {
 		// then
 		assertTrue(wouldCauseCheck);
 	}
-	
+
 	@Test
 	public void shouldReturnFalseForNotMovingWhiteBishopIntoCheck() {
 		// given
@@ -115,9 +115,9 @@ public class PieceMovingCheckTest {
 		// then
 		assertFalse(wouldCauseCheck);
 	}
-	
+
 	@Test
-	public void shouldReturnTrueForMovingWhiteKnightIntoCheck(){
+	public void shouldReturnTrueForMovingWhiteKnightIntoCheck() {
 		// given
 		from = new Coordinate(2, 3);
 		to = new Coordinate(3, 5);
@@ -131,9 +131,9 @@ public class PieceMovingCheckTest {
 		// then
 		assertTrue(wouldCauseCheck);
 	}
-	
+
 	@Test
-	public void shouldReturnTrueForMovingWhitePawnIntoCheck(){
+	public void shouldReturnTrueForMovingWhitePawnIntoCheck() {
 		// given
 		from = new Coordinate(2, 4);
 		to = new Coordinate(3, 4);

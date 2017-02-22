@@ -1,5 +1,14 @@
 package com.capgemini.chess;
 
+/**
+ * King class represents King chess piece. Every created King must be white or
+ * black. King validates its moves - king can only move one field in any
+ * direction. King cannot jump over pieces. King captures same way it moves.
+ * King class doesn't implement castling move.
+ * 
+ * @author BOWROBEL
+ *
+ */
 public class King extends Piece {
 	private Coordinate[] allowedMoves = { new Coordinate(1, 1), new Coordinate(-1, 1), new Coordinate(-1, -1),
 			new Coordinate(1, -1), new Coordinate(1, 0), new Coordinate(0, 1), new Coordinate(-1, 0),

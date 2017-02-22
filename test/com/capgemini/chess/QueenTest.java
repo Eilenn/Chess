@@ -40,8 +40,8 @@ public class QueenTest {
 	public void shouldReturnTrueFor2UpDestinationEmpty() {
 		// given
 		to = new Coordinate(fromRow - 2, fromCol);
-		chessboard[to.getRow()][to.getColumn()].setPiece(new EmptyPiece()); // freed
-																			// destination
+		// freeing destination
+		chessboard[to.getRow()][to.getColumn()].setPiece(new EmptyPiece());
 		// when
 		boolean isValid = queen.canMoveBeMade(from, to, chessboard);
 		// then
@@ -182,11 +182,11 @@ public class QueenTest {
 		// then
 		assertTrue(isValid);
 	}
-	
+
 	@Test
 	public void shouldReturnTrueForDiagonalUpLeftEmpty() {
 		// given
-		to = new Coordinate(fromRow -1, fromCol - 1);
+		to = new Coordinate(fromRow - 1, fromCol - 1);
 		// when
 		boolean isValid = queen.canMoveBeMade(from, to, chessboard);
 		// then
@@ -196,23 +196,23 @@ public class QueenTest {
 	@Test
 	public void shouldReturnTrueForDiagonalUpRightEmpty() {
 		// given
-		to = new Coordinate(fromRow -1, fromCol + 1);
+		to = new Coordinate(fromRow - 1, fromCol + 1);
 		// when
 		boolean isValid = queen.canMoveBeMade(from, to, chessboard);
 		// then
 		assertTrue(isValid);
 	}
-	
+
 	@Test
 	public void shouldReturnFalseForDiagonalUpRightNonEmptyWhite() {
 		// given
-		to = new Coordinate(fromRow -2, fromCol + 2);
+		to = new Coordinate(fromRow - 2, fromCol + 2);
 		// when
 		boolean isValid = queen.canMoveBeMade(from, to, chessboard);
 		// then
 		assertFalse(isValid);
 	}
-	
+
 	@Test
 	public void shouldReturnTrueForDiagonalDownRightNonEmptyBlack() {
 		// given
@@ -222,7 +222,7 @@ public class QueenTest {
 		// then
 		assertTrue(isValid);
 	}
-	
+
 	@Test
 	public void shouldReturnFalseForDiagonalDownRightNonEmptyWhite() {
 		// given

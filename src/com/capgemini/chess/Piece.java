@@ -1,7 +1,13 @@
 package com.capgemini.chess;
 
+/**
+ * Piece class is an abstract class representing a piece in chess. Other pieces
+ * extend this class.
+ * 
+ * @author BOWROBEL
+ *
+ */
 public abstract class Piece {
-	// TODO remove declarations of color from every class
 	public ColorChess white = ColorChess.WHITE;
 	public ColorChess black = ColorChess.BLACK;
 	private ColorChess color;
@@ -19,12 +25,32 @@ public abstract class Piece {
 		return color;
 	}
 
-	public boolean canMoveBeMade(Coordinate from, Coordinate to, Square[][] chessboard){
-		return isMoveValid(from, to, chessboard)&&(!wouldMoveCauseCheck(from, to, chessboard));
+	/**
+	 * Checks if the move is valid for the piece and if it doesn't cause check
+	 * for the same team's king. Returns true for possible move and false for
+	 * impossible move.
+	 * 
+	 * @param from
+	 * @param to
+	 * @param chessboard
+	 * @return
+	 */
+	public boolean canMoveBeMade(Coordinate from, Coordinate to, Square[][] chessboard) {
+		return isMoveValid(from, to, chessboard) && (!wouldMoveCauseCheck(from, to, chessboard));
 	}
+
+	/**
+	 * Checks if the move would cause check for the king of the same color as
+	 * the piece being moved. Returns true if the move would cause check and
+	 * false for move not causing check.
+	 * 
+	 * @param from
+	 * @param to
+	 * @param chessboard
+	 * @return
+	 */
 	public boolean wouldMoveCauseCheck(Coordinate from, Coordinate to, Square[][] chessboard) {
 		// move piece to target, set empty at origin
-		//System.out.println(to.getColumn());
 		Piece pieceBeingMoved = chessboard[from.getRow()][from.getColumn()].getPiece();
 		ColorChess pieceBeingMovedColor = pieceBeingMoved.getColor();
 		ColorChess opponentColor = returnOpponentColor(pieceBeingMovedColor);
@@ -56,6 +82,16 @@ public abstract class Piece {
 		return false;
 	}
 
+	/**
+	 * Checks if the destination is not occupied by a piece of the same color as
+	 * piece being moved. Returns true for destination occupied by the piece of
+	 * the same color and false for the other color or empty field.
+	 * 
+	 * @param from
+	 * @param to
+	 * @param chessboard
+	 * @return
+	 */
 	public boolean isPieceAtDestinationTheSameColorAsPieceMoved(Coordinate from, Coordinate to, Square[][] chessboard) {
 		Square origin = chessboard[from.getRow()][from.getColumn()];
 		Piece pieceMoved = origin.getPiece();
@@ -71,6 +107,13 @@ public abstract class Piece {
 			return true;
 	}
 
+	/**
+	 * Returns opponent's color. If the piece is black, returns white. If the
+	 * piece is white, returns black.
+	 * 
+	 * @param pieceColor
+	 * @return
+	 */
 	private ColorChess returnOpponentColor(ColorChess pieceColor) {
 		if (pieceColor == black)
 			return white;
@@ -78,6 +121,14 @@ public abstract class Piece {
 			return black;
 	}
 
+	/**
+	 * Finds position of the king of specified color on the board. Returns the
+	 * position as coordinate containing the row and column
+	 * 
+	 * @param kingsColor
+	 * @param chessboard
+	 * @return
+	 */
 	private Coordinate getSameTeamKingsPosition(ColorChess kingsColor, Square[][] chessboard) {
 		Coordinate kingsPosition = new Coordinate(0, 0);
 		Square sq;

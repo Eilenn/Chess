@@ -6,7 +6,6 @@ import org.junit.Before;
 import org.junit.Test;
 
 public class KnightTest {
-	// TODO improve tests
 	private ColorChess white = ColorChess.WHITE;
 	private Knight knight;
 	private Coordinate from, to;

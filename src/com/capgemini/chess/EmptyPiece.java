@@ -1,11 +1,24 @@
 package com.capgemini.chess;
 
+/**
+ * EmptyPiece class represents empty field on chess board. EmptyPiece cannot
+ * have a color. EmptyPiece also cannot be moved, so its isMoveValid method
+ * always returns false.
+ * 
+ * @author BOWROBEL
+ *
+ */
 public class EmptyPiece extends Piece {
 	private String empty;
 
 	public EmptyPiece() {
 		this.empty = "empty";
 
+	}
+
+	@Override
+	public boolean isMoveValid(Coordinate from, Coordinate to, Square[][] chessboard) {
+		return false;
 	}
 
 	@Override
@@ -31,11 +44,6 @@ public class EmptyPiece extends Piece {
 		} else if (!empty.equals(other.empty))
 			return false;
 		return true;
-	}
-//TODO fix implementation?
-	@Override
-	public boolean isMoveValid(Coordinate from, Coordinate to, Square[][] chessboard) {
-		return false;
 	}
 
 }

@@ -1,5 +1,12 @@
 package com.capgemini.chess;
 
+/**
+ * Coordinate class represents row and column coordinates, used mainly in
+ * specifying move coordinates.
+ * 
+ * @author BOWROBEL
+ *
+ */
 public class Coordinate {
 	private int row;
 	private int column;
